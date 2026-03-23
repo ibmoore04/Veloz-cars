@@ -149,6 +149,10 @@
             box-shadow: 0 10px 30px -10px #010314;
         }
 
+        .navbar .container {
+            max-width: 100% !important;
+        }
+
         .navbar .nav-link {
             color: #b3c7ff !important;
             font-weight: 500;
@@ -314,19 +318,23 @@
     <!-- ========== SECTION 1: NAVBAR ========== -->
     <nav class="navbar navbar-expand-lg navbar-dark-blue fixed-top" data-aos="fade-down" data-aos-duration="900">
         <div class="container">
-            <a class="navbar-brand fw-bold fs-2" href="#"><i class="bi bi-car-front-fill me-2"
+            <a class="navbar-brand fw-bold fs-4 fs-lg-2" href="#"><i class="bi bi-car-front-fill me-2"
                     style="color: #4b7bec;"></i><span style="color: #e0e7ff;">veloz</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navDark">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navDark">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
                     <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#inventory">Inventory</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#Showroom">Showroom</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#showroom">Showroom</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    <li class="nav-item ms-lg-3"><a class="btn btn-veloz" href="#"><i
-                                class="bi bi-telephone-inbound"></i>+234-7053357203</a></li>
+
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a class="btn btn-veloz w-100 w-lg-auto text-center" href="#">
+                            <i class="bi bi-telephone-inbound"></i> +234-7053357203
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
