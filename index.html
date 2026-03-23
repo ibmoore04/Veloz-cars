@@ -165,6 +165,34 @@
             text-shadow: 0 0 8px #4b7bec;
         }
 
+        /* Prevent horizontal scroll */
+        body {
+            overflow-x: hidden;
+        }
+
+        /* Navbar color */
+        .navbar-dark-blue {
+            background-color: #0a1931;
+        }
+
+        /* Hero section fix */
+        .hero-dark-bg {
+            overflow: hidden;
+        }
+
+        /* Image responsiveness */
+        .hero-img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #2a4a8c;
+        }
+
+        /* Fix container spacing on mobile */
+        .hero-dark-bg .container {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
         /* cards and images */
         .car-card-dark {
             background: #0f1a2b;
@@ -316,15 +344,20 @@
     <!-- 12 SECTIONS with online images and dark blue background -->
 
     <!-- ========== SECTION 1: NAVBAR ========== -->
-    <nav class="navbar navbar-expand-lg navbar-dark-blue fixed-top" data-aos="fade-down" data-aos-duration="900">
-        <div class="container">
-            <a class="navbar-brand fw-bold fs-4 fs-lg-2" href="#"><i class="bi bi-car-front-fill me-2"
-                    style="color: #4b7bec;"></i><span style="color: #e0e7ff;">veloz</span></a>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-dark-blue fixed-top">
+        <div class="container px-5">
+            <a class="navbar-brand fw-bold fs-4 fs-lg-2" href="#">
+                <i class="bi bi-car-front-fill me-2" style="color: #4b7bec;"></i>
+                <span style="color: #e0e7ff;">veloz</span>
+            </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navDark">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navDark">
                 <ul class="navbar-nav ms-auto align-items-lg-center">
+
                     <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#inventory">Inventory</a></li>
                     <li class="nav-item"><a class="nav-link" href="#showroom">Showroom</a></li>
@@ -335,38 +368,55 @@
                             <i class="bi bi-telephone-inbound"></i> +234-7053357203
                         </a>
                     </li>
+
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- ========== SECTION 2: HERO (dark blue) ========== -->
-    <section class="hero-dark-bg min-vh-100 d-flex align-items-center pt-5" style="margin-top: 30px;">
+    <!-- HERO -->
+    <section class="hero-dark-bg min-vh-100 d-flex align-items-center pt-5">
         <div class="hero-glow"></div>
+
         <div class="container position-relative z-3">
             <div class="row align-items-center">
-                <div class="col-lg-6 text-soft-white" data-aos="fade-right" data-aos-duration="1200">
-                    <span class="badge bg-primary mb-4 px-4 py-2 fs-6 rounded-pill"
-                        style="background: #1e3a6f !important;"><i class="bi bi-stars"></i> limited series 2025</span>
-                    <h1 class="display-3 fw-bold mb-4"
+
+                <!-- TEXT -->
+                <div class="col-lg-6 text-soft-white text-center text-lg-start">
+                    <span class="badge bg-primary mb-4 px-3 py-2 fs-6 rounded-pill"
+                        style="background: #1e3a6f !important;">
+                        <i class="bi bi-stars"></i> limited series 2025
+                    </span>
+
+                    <h1 class="display-5 display-lg-3 fw-bold mb-4"
                         style="background: linear-gradient(145deg, #ffffff, #9bbaff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                        Unleash the <br>midnight drive</h1>
-                    <p class="lead mb-5" style="color: #b0c6ff;">Curated performance cars, fully inspected, delivered to
-                        your door. Dark blue elegance.</p>
-                    <div class="d-flex flex-wrap gap-3">
-                        <a href="#" class="btn btn-veloz btn-lg px-5 py-3"><i class="bi bi-search"></i> search 2,500+
-                            cars</a>
-                        <a href="#" class="btn btn-outline-primary btn-lg px-5 py-3 rounded-pill"
-                            style="border-color:#4b7bec; color:#b3ccff;">virtual tour <i
-                                class="bi bi-play-circle"></i></a>
+                        Unleash the <br>midnight drive
+                    </h1>
+
+                    <p class="lead mb-4" style="color: #b0c6ff;">
+                        Curated performance cars, fully inspected, delivered to your door.
+                    </p>
+
+                    <div class="d-flex flex-column flex-lg-row gap-3">
+
+                        <a href="#inventory" class="btn btn-veloz btn-lg px-3 py-2 w-100 w-lg-auto">
+                            <i class="bi bi-search"></i> search cars
+                        </a>
+
+                        <a href="#" class="btn btn-outline-primary btn-lg px-3 py-2 w-100 w-lg-auto rounded-pill"
+                            style="border-color:#4b7bec; color:#b3ccff;">
+                            virtual tour <i class="bi bi-play-circle"></i>
+                        </a>
+
                     </div>
                 </div>
-                <div class="col-lg-6 mt-5 mt-lg-0 text-center" data-aos="fade-left" data-aos-duration="1200">
-                    <!-- online image unsplash: dark car concept -->
-                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="dark sports car" class="img-fluid rounded-5 shadow-lg"
-                        style="max-height: 450px; object-fit: cover; border: 2px solid #2a4a8c; animation: floatDark 5s infinite;">
+
+                <!-- IMAGE -->
+                <div class="col-lg-6 mt-5 mt-lg-0 text-center">
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070&auto=format&fit=crop"
+                        alt="dark sports car" class="img-fluid rounded-4 shadow-lg hero-img">
                 </div>
+
             </div>
         </div>
     </section>
