@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veloz | dark blue performance</title>
+    <link rel="icon" href="./veloz.jpg">
+    <!-- Bootstrap 5 + icons + AOS + extra animation libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- AOS for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- custom dark blue styles & animations -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            background: #0a1120;
+            /* deep dark blue base */
+            color: #e0e7ff;
+            overflow-x: hidden;
+        }
+
+        /* custom dark blue theme overrides */
+        .bg-deep-blue {
+            background: #0a1120;
+        }
+
+        .bg-card-blue {
+            background: #111c2f;
+            border: 1px solid #1e2b41;
+        }
+
+        .text-soft-white {
+            color: #e0e7ff;
+        }
+
+        .text-blue-accent {
+            color: #4b7bec;
+        }
+
+        .btn-veloz {
+            background: #1e3a6f;
+            color: white;
+            border: none;
+            transition: all 0.3s;
+            border-radius: 40px;
+            padding: 12px 32px;
+            font-weight: 600;
+        }
+
+        .btn-veloz:hover {
+            background: #2a4a8c;
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px #1e3a6f80;
+        }
+
+        /* complex animations */
+        @keyframes floatDark {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes glowPulse {
+            0% {
+                box-shadow: 0 0 0 0 #4b7bec;
+            }
+
+            50% {
+                box-shadow: 0 0 30px 5px #1e3a6f;
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 #4b7bec;
+            }
+        }
+
+        @keyframes tiltIn {
+            0% {
+                transform: rotateX(30deg) translateY(30px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: rotateX(0) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInUpBlur {
+            0% {
+                transform: translateY(60px);
+                opacity: 0;
+                filter: blur(10px);
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+                filter: blur(0);
+            }
+        }
+
+        @keyframes rotateScale {
+            0% {
+                transform: scale(0.8) rotate(-5deg);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1) rotate(0);
+                opacity: 1;
+            }
+        }
+
+        .animate-float-dark {
+            animation: floatDark 4s ease-in-out infinite;
+        }
+
+        .glow-hover {
+            transition: 0.3s;
+        }
+
+        .glow-hover:hover {
+            box-shadow: 0 0 35px #1e3a6f;
+            transform: translateY(-8px);
+        }
+
+        /* navbar custom */
+        .navbar-dark-blue {
+            background: #0b1424 !important;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #1e2f47;
+            box-shadow: 0 10px 30px -10px #010314;
+        }
+
+        .navbar .nav-link {
+            color: #b3c7ff !important;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .navbar .nav-link:hover {
+            color: #7b9eff !important;
+            transform: translateY(-2px);
+            text-shadow: 0 0 8px #4b7bec;
+        }
+
+        /* cards and images */
+        .car-card-dark {
+            background: #0f1a2b;
+            border-radius: 28px;
+            padding: 16px;
+            border: 1px solid #253549;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+
+        .car-card-dark:hover {
+            border-color: #4b7bec;
+            transform: scale(1.02) translateY(-10px);
+            box-shadow: 0 30px 40px -15px #010314;
+        }
+
+        .car-card-dark img {
+            border-radius: 20px;
+            transition: transform 0.6s;
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .car-card-dark:hover img {
+            transform: scale(1.06);
+        }
+
+        /* section titles */
+        .section-title-dark {
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+            background: linear-gradient(135deg, #a6c1ff, #4b7bec);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .section-title-dark::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #4b7bec, #0f2b55);
+            border-radius: 4px;
+            transition: width 0.4s;
+        }
+
+        .section-title-dark:hover::after {
+            width: 150px;
+        }
+
+        /* counter blocks */
+        .counter-block {
+            background: #0f1c30;
+            padding: 30px;
+            border-radius: 40px;
+            border: 1px solid #1e3452;
+            transition: 0.3s;
+        }
+
+        .counter-number {
+            font-size: 3.8rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #7b9eff, #b0cdff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+
+        /* testimonial cards */
+        .testimonial-card {
+            background: #0f1c30;
+            border-radius: 30px;
+            padding: 30px;
+            border: 1px solid #253e60;
+            transition: 0.4s;
+        }
+
+        .testimonial-card:hover {
+            border-color: #4b7bec;
+            transform: rotate(1deg) scale(1.02);
+        }
+
+        /* footer socials */
+        .social-icon-dark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: #14253d;
+            color: #9bb5ff;
+            border-radius: 50%;
+            transition: 0.3s;
+            font-size: 1.4rem;
+            text-decoration: none;
+        }
+
+        .social-icon-dark:hover {
+            background: #1e3a6f;
+            color: white;
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 5px 20px #1e3a6f;
+        }
+
+        /* hero shape overlay */
+        .hero-dark-bg {
+            background: radial-gradient(circle at 20% 30%, #132337, #030614);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: #1e3a6f40;
+            filter: blur(100px);
+            border-radius: 50%;
+            top: -200px;
+            right: -100px;
+            z-index: 0;
+        }
+
+        /* additional animations */
+        .reveal-scale {
+            transition: 1s;
+        }
+
+        .brand-icon {
+            filter: drop-shadow(0 0 15px #1e3a6f);
+            transition: 0.3s;
+        }
+
+        .brand-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+            filter: drop-shadow(0 0 30px #4b7bec);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 12 SECTIONS with online images and dark blue background -->
+
+    <!-- ========== SECTION 1: NAVBAR ========== -->
+    <nav class="navbar navbar-expand-lg navbar-dark-blue fixed-top" data-aos="fade-down" data-aos-duration="900">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-2" href="#"><i class="bi bi-car-front-fill me-2"
+                    style="color: #4b7bec;"></i><span style="color: #e0e7ff;">veloz</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navDark">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navDark">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#inventory">Inventory</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#Showroom">Showroom</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item ms-lg-3"><a class="btn btn-veloz" href="#"><i
+                                class="bi bi-telephone-inbound"></i>+234-7053357203</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== SECTION 2: HERO (dark blue) ========== -->
+    <section class="hero-dark-bg min-vh-100 d-flex align-items-center pt-5" style="margin-top: -56px;">
+        <div class="hero-glow"></div>
+        <div class="container position-relative z-3">
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-soft-white" data-aos="fade-right" data-aos-duration="1200">
+                    <span class="badge bg-primary mb-4 px-4 py-2 fs-6 rounded-pill"
+                        style="background: #1e3a6f !important;"><i class="bi bi-stars"></i> limited series 2025</span>
+                    <h1 class="display-3 fw-bold mb-4"
+                        style="background: linear-gradient(145deg, #ffffff, #9bbaff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        Unleash the <br>midnight drive</h1>
+                    <p class="lead mb-5" style="color: #b0c6ff;">Curated performance cars, fully inspected, delivered to
+                        your door. Dark blue elegance.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#" class="btn btn-veloz btn-lg px-5 py-3"><i class="bi bi-search"></i> search 2,500+
+                            cars</a>
+                        <a href="#" class="btn btn-outline-primary btn-lg px-5 py-3 rounded-pill"
+                            style="border-color:#4b7bec; color:#b3ccff;">virtual tour <i
+                                class="bi bi-play-circle"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0 text-center" data-aos="fade-left" data-aos-duration="1200">
+                    <!-- online image unsplash: dark car concept -->
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="dark sports car" class="img-fluid rounded-5 shadow-lg"
+                        style="max-height: 450px; object-fit: cover; border: 2px solid #2a4a8c; animation: floatDark 5s infinite;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 3: FEATURED CARS ========== -->
+    <section class="py-5" style="background: #0b1424;">
+        <div class="container py-5">
+            <div class="text-center" data-aos="zoom-in">
+                <h2 class="section-title-dark display-5 fw-bold">featured performances</h2>
+                <p class="text-secondary-emphasis mb-5" style="color: #9ab3dd;">handpicked for you</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="100">
+                    <div class="car-card-dark">
+                        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="porsche">
+                        <div class="mt-3">
+                            <h4 class="fw-bold">911 Turbo S</h4>
+                            <p>2024 · 900 mi · AWD</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h3" style="color:#7b9eff;">$219,000</span>
+                                <a href="#" class="btn btn-sm btn-outline-primary rounded-pill">details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
+                    <div class="car-card-dark">
+                        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="mustang dark">
+                        <div class="mt-3">
+                            <h4 class="fw-bold">Mustang Dark Horse</h4>
+                            <p>2025 · 1,200 mi · V8</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h3" style="color:#7b9eff;">$64,500</span>
+                                <a href="#" class="btn btn-sm btn-outline-primary rounded-pill">details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-left" data-aos-delay="300">
+                    <div class="car-card-dark">
+                        <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?q=80&w=2025&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="audi r8">
+                        <div class="mt-3">
+                            <h4 class="fw-bold">Audi R8 V10</h4>
+                            <p>2023 · 3,400 mi · quattro</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="h3" style="color:#7b9eff;">$157,200</span>
+                                <a href="#" class="btn btn-sm btn-outline-primary rounded-pill">details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 4: STATS ========== -->
+    <section class="py-5" style="background: #0d1727;">
+        <div class="container py-4">
+            <div class="row g-4 text-center">
+                <div class="col-md-3" data-aos="fade-up">
+                    <div class="counter-block">
+                        <div class="counter-number">487+</div>
+                        <p class="mb-0">premium cars</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="counter-block">
+                        <div class="counter-number">99%</div>
+                        <p class="mb-0">satisfaction</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="counter-block">
+                        <div class="counter-number">24/7</div>
+                        <p class="mb-0">concierge</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="counter-block">
+                        <div class="counter-number">9</div>
+                        <p class="mb-0">dark-blue stores</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 5: INVENTORY GRID ========== -->
+    <section class="py-5" style="background: #0b1424;" id="Showroom">
+        <div class="container">
+            <h2 class="section-title-dark display-5 fw-bold" data-aos="fade-right">fresh arrivals</h2>
+            <div class="row g-4 mt-3">
+                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="50">
+                    <div class="car-card-dark"><img
+                            src="https://images.unsplash.com/photo-1542362567-b07e54358753?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="bmw">
+                        <h6 class="mt-2">BMW M4</h6><span class="text-blue-accent">$82,400</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="150">
+                    <div class="car-card-dark"><img
+                            src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="mercedes">
+                        <h6 class="mt-2">AMG GT</h6><span class="text-blue-accent">$138,000</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="250">
+                    <div class="car-card-dark"><img
+                            src="https://images.unsplash.com/photo-1556189250-72ba954cfc2b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="tesla">
+                        <h6 class="mt-2">Tesla Model S</h6><span class="text-blue-accent">$71,990</span>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="350">
+                    <div class="car-card-dark"><img
+                            src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="range rover">
+                        <h6 class="mt-2">Range Rover</h6><span class="text-blue-accent">$94,500</span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5" data-aos="fade-up"><a href="#" class="btn btn-veloz btn-lg px-5">explore 200+
+                    more</a></div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 6: WHY US ========== -->
+    <section class="py-5" style="background: #0d1727;" id="inventory">
+        <div class="container py-4">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="dark interior" class="img-fluid rounded-5 shadow" style="border: 2px solid #1e3a6f;">
+                </div>
+                <div class="col-lg-6 mt-4 mt-lg-0" data-aos="fade-left">
+                    <span class="badge bg-primary mb-3" style="background: #1e3a6f !important;">why veloz</span>
+                    <h2 class="display-6 fw-bold text-soft-white">engineered for <span
+                            style="border-bottom: 3px solid #4b7bec;">midnight drives</span></h2>
+                    <div class="d-flex gap-4 mt-4"><i class="bi bi-shield-check fs-1" style="color:#4b7bec;"></i>
+                        <div>
+                            <h5>250+ point inspection</h5>
+                            <p>no compromises.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-4"><i class="bi bi-arrow-repeat fs-1" style="color:#4b7bec;"></i>
+                        <div>
+                            <h5>30-day return</h5>
+                            <p>peace of mind.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-4"><i class="bi bi-truck fs-1" style="color:#4b7bec;"></i>
+                        <div>
+                            <h5>dark blue delivery</h5>
+                            <p>free within 100mi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 7: TESTIMONIALS ========== -->
+    <section class="py-5" style="background: #0b1424;">
+        <div class="container">
+            <h2 class="section-title-dark display-5 fw-bold text-center" data-aos="fade-down">owners voice</h2>
+            <div class="row mt-5">
+                <div class="col-md-4" data-aos="flip-up">
+                    <div class="testimonial-card"><i class="bi bi-quote display-1" style="color:#1e3a6f;"></i>
+                        <p class="fst-italic">"Absolute beast. The dark blue theme even matches my car!"</p>
+                        <div><b>— Alex R.</b><span class="text-warning ms-2">★★★★★</span></div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-up" data-aos-delay="100">
+                    <div class="testimonial-card"><i class="bi bi-quote display-1" style="color:#1e3a6f;"></i>
+                        <p class="fst-italic">"Felt like driving in a movie. Flawless delivery."</p>
+                        <div><b>— Jamie L.</b><span class="text-warning ms-2">★★★★★</span></div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="flip-up" data-aos-delay="200">
+                    <div class="testimonial-card"><i class="bi bi-quote display-1" style="color:#1e3a6f;"></i>
+                        <p class="fst-italic">"They understand car enthusiasts. Huge selection."</p>
+                        <div><b>— Taylor M.</b><span class="text-warning ms-2">★★★★★</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 8: BRANDS ========== -->
+    <section class="py-5" style="background: #0d1727;">
+        <div class="container">
+            <h2 class="text-center fw-bold text-soft-white mb-5" data-aos="fade-up">iconic brands</h2>
+            <div class="row row-cols-2 row-cols-md-4 g-4 text-center">
+                <div class="col brand-icon" data-aos="zoom-in"><i class="bi bi-trophy fs-1" style="color:#4b7bec;"></i>
+                    <h5>Porsche</h5>
+                </div>
+                <div class="col brand-icon" data-aos="zoom-in" data-aos-delay="100"><i class="bi bi-lightning fs-1"
+                        style="color:#4b7bec;"></i>
+                    <h5>Ferrari</h5>
+                </div>
+                <div class="col brand-icon" data-aos="zoom-in" data-aos-delay="200"><i
+                        class="bi bi-gear-wide-connected fs-1" style="color:#4b7bec;"></i>
+                    <h5>Lamborghini</h5>
+                </div>
+                <div class="col brand-icon" data-aos="zoom-in" data-aos-delay="300"><i class="bi bi-shield fs-1"
+                        style="color:#4b7bec;"></i>
+                    <h5>Maserati</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 9: BLOG ========== -->
+    <section class="py-5" style="background: #0b1424;">
+        <div class="container">
+            <h2 class="section-title-dark fw-bold" data-aos="fade-right">latest from veloz</h2>
+            <div class="row mt-4">
+                <div class="col-md-6" data-aos="fade-up">
+                    <div class="card bg-card-blue mb-3 border-0">
+                        <div class="row g-0">
+                            <div class="col-md-4"><img
+                                    src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                    class="img-fluid h-100 rounded-start" style="object-fit:cover;"></div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="text-soft-white">Winter tire guide</h5>
+                                    <p class="text-secondary">Keep your grip on dark ice.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card bg-card-blue mb-3 border-0">
+                        <div class="row g-0">
+                            <div class="col-md-4"><img
+                                    src="https://images.unsplash.com/photo-1617469767053-d3b523a0b982?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                    class="img-fluid h-100 rounded-start" style="object-fit:cover;"></div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="text-soft-white">Detailing secrets</h5>
+                                    <p class="text-secondary">Keep that deep blue shine.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 10: CALL TO ACTION ========== -->
+    <section class="py-5" style="background: #0f1c30;">
+        <div class="container py-4 text-center" data-aos="flip-up">
+            <h2 class="display-5 fw-bold" style="color:#cddcff;">reserve your drive</h2>
+            <p class="lead" style="color:#a3bbeb;">Test drive any dark blue beauty, zero pressure.</p>
+            <a href="#" class="btn btn-veloz btn-lg px-5 py-3 mt-3"><i class="bi bi-calendar-week"></i> schedule now</a>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 11: CONTACT ========== -->
+    <section class="py-5" style="background: #0b1424;" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6" data-aos="fade-right">
+                    <h2 class="section-title-dark fw-bold">contact</h2>
+                    <p><i class="bi bi-pin-map-fill text-primary me-2"></i>Ijebu-Ode,Ogun State</p>
+                    <p><i class="bi bi-envelope-fill text-primary me-2"></i>akanbiibrahimolatunde27@gmail.com</p>
+                    <p><i class="bi bi-telephone-fill text-primary me-2"></i>+234-7053357203</p>
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <form onsubmit="event.preventDefault(); alert('demo: message sent (dark mode)');">
+                        <input type="text" class="form-control bg-card-blue text-soft-white border-0 mb-3 rounded-pill"
+                            placeholder="Your name">
+                        <input type="email" class="form-control bg-card-blue text-soft-white border-0 mb-3 rounded-pill"
+                            placeholder="Email">
+                        <textarea class="form-control bg-card-blue text-soft-white border-0 rounded-4" rows="3"
+                            placeholder="Message"></textarea>
+                        <button class="btn btn-veloz mt-3 px-5">send <i class="bi bi-send"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 12: FOOTER ========== -->
+    <footer class="py-4" style="background: #030812; border-top: 1px solid #1e2f47;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start text-secondary">© 2025 veloz dark blue edition</div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="https://www.facebook.com/profile.php?id=61565920483171" target="_blank"
+                        class="social-icon-dark me-2"><i class="bi bi-facebook"></i></a>
+                    <a href="https://wa.me/2347053357203" target="_blank" class="social-icon-dark me-2"><i
+                            class="bi bi-whatsapp"></i></a>
+                    <a href="https://github.com/ibmoore04" target="_blank" class="social-icon-dark me-2"><i
+                            class="bi bi-github"></i></a>
+                    <a href="https://www.linkedin.com/in/akanbi-ibrahim-4ab3043a6/" target="_blank"
+                        class="social-icon-dark"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 900, once: false, mirror: true, offset: 40 });
+
+        // little counter pulse effect
+        document.querySelectorAll('.counter-number').forEach(el => {
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        el.style.transform = 'scale(1.1)';
+                        setTimeout(() => el.style.transform = 'scale(1)', 200);
+                    }
+                });
+            });
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
