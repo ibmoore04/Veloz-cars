@@ -79,12 +79,13 @@
             transform: translateY(-2px);
         }
 
-        /* Navbar premium */
+        /* Navbar premium - FIXED MOBILE OVERFLOW */
         .navbar-premium {
-            background: rgba(8, 18, 34, 0.92);
+            background: rgba(8, 18, 34, 0.96);
             backdrop-filter: blur(18px);
             border-bottom: 1px solid rgba(75, 123, 236, 0.3);
             box-shadow: 0 12px 28px -12px rgba(0, 0, 0, 0.5);
+            padding: 0.75rem 1rem;
         }
 
         .navbar-brand-custom {
@@ -94,14 +95,16 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+            font-size: 1.6rem;
         }
 
         .nav-link-custom {
             color: #c9deff !important;
             font-weight: 500;
-            margin: 0 6px;
+            margin: 0 4px;
             transition: 0.25s;
             position: relative;
+            padding: 0.5rem 0.75rem !important;
         }
 
         .nav-link-custom:hover {
@@ -109,7 +112,63 @@
             transform: translateY(-2px);
         }
 
-        /* Hero section with dynamic orbs */
+        /* Fix navbar collapse container on mobile */
+        @media (max-width: 991.98px) {
+            .navbar-premium .container {
+                padding-left: 12px;
+                padding-right: 12px;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .navbar-collapse {
+                margin-top: 1rem;
+                padding-bottom: 0.5rem;
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+
+            .navbar-nav {
+                padding-bottom: 0.75rem;
+            }
+
+            .nav-link-custom {
+                text-align: center;
+                padding: 0.75rem 0.5rem !important;
+                margin: 0;
+            }
+
+            .btn-veloz-primary {
+                width: 100%;
+                text-align: center;
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            /* Fix toggle button positioning */
+            .navbar-toggler {
+                margin-right: 0;
+                border: 1px solid rgba(75, 123, 236, 0.5);
+                padding: 0.5rem 0.75rem;
+            }
+
+            .navbar-toggler:focus {
+                box-shadow: 0 0 0 3px rgba(75, 123, 236, 0.3);
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 576px) {
+            .navbar-brand-custom {
+                font-size: 1.4rem;
+            }
+
+            .navbar-premium .container {
+                padding-left: 8px;
+                padding-right: 8px;
+            }
+        }
+
         .hero-veloz {
             background: radial-gradient(ellipse at 30% 40%, #10223b, #030614);
             position: relative;
@@ -137,7 +196,7 @@
             filter: blur(90px);
         }
 
-        /* car cards */
+        /* luxury cards */
         .luxury-card {
             background: #0f1a2be6;
             backdrop-filter: blur(4px);
@@ -269,6 +328,7 @@
             color: #aac5ff;
             transition: 0.25s;
             font-size: 1.3rem;
+            text-decoration: none;
         }
 
         .social-dark-btn:hover {
@@ -283,40 +343,54 @@
             border-radius: 2rem;
         }
 
-        @keyframes pulse-glow {
-            0% {
-                text-shadow: 0 0 0px #4b7bec;
-            }
+        /* Prevent horizontal scroll on all devices */
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
 
-            100% {
-                text-shadow: 0 0 12px #4b7bec;
-            }
+        .container,
+        .container-fluid {
+            overflow-x: hidden;
+        }
+
+        /* Fix any potential overflow */
+        img,
+        video,
+        iframe {
+            max-width: 100%;
+            height: auto;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- ===================== SECTION 1: NAVIGATION ===================== -->
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-premium fixed-top py-3">
-        <div class="container px-4">
-            <a class="navbar-brand d-flex align-items-center gap-2 fs-3 fw-bold" href="#">
-                <i class="bi bi-lightning-charge-fill" style="color: #4b7bec;"></i>
+    <!-- ===================== SECTION 1: NAVIGATION - FIXED MOBILE OVERFLOW ===================== -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-premium fixed-top">
+        <div class="container px-3 px-sm-4">
+            <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="#">
+                <i class="bi bi-lightning-charge-fill" style="color: #4b7bec; font-size: 1.8rem;"></i>
                 <span class="navbar-brand-custom">VELOZ</span>
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navMain">
-                <ul class="navbar-nav mx-auto gap-lg-2">
+                <ul class="navbar-nav ms-auto gap-lg-2 align-items-lg-center">
                     <li class="nav-item"><a class="nav-link nav-link-custom" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link nav-link-custom" href="#fleet">Fleet</a></li>
                     <li class="nav-item"><a class="nav-link nav-link-custom" href="#showcase">Showroom</a></li>
                     <li class="nav-item"><a class="nav-link nav-link-custom" href="#testimonials">Voices</a></li>
                     <li class="nav-item"><a class="nav-link nav-link-custom" href="#contact-footer">Connect</a></li>
+                    <li class="nav-item mt-2 mt-lg-0 ms-lg-2">
+                        <a href="#" class="btn btn-veloz-primary rounded-pill d-block d-lg-inline-block text-center"
+                            style="padding: 10px 28px;"><i class="bi bi-telephone-fill me-2"></i>+234-705-335-7203</a>
+                    </li>
                 </ul>
-                <a href="#" class="btn btn-veloz-primary px-4 rounded-pill"><i
-                        class="bi bi-telephone-fill me-2"></i>+234-705-335-7203</a>
             </div>
         </div>
     </nav>
