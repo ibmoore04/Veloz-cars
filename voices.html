@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
     <title>Veloz | Voices - What Our Community Says</title>
     <link rel="icon"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234b7bec'%3E%3Cpath d='M12 2C8 2 4 4 4 8c0 4 8 12 8 12s8-8 8-12c0-4-4-6-8-6z'/%3E%3C/svg%3E">
@@ -20,18 +20,32 @@
             box-sizing: border-box;
         }
 
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+        }
+
         body {
             font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
             background: #0a1120;
             color: #eef3ff;
-            overflow-x: hidden;
         }
 
+        /* Navbar fixes */
         .navbar-premium {
             background: rgba(8, 18, 34, 0.96);
             backdrop-filter: blur(18px);
             border-bottom: 1px solid rgba(75, 123, 236, 0.3);
-            padding: 0.75rem 1rem;
+            padding: 0.75rem 0;
+        }
+
+        .navbar-premium .container {
+            padding-left: 16px;
+            padding-right: 16px;
+            max-width: 100%;
         }
 
         .navbar-brand-custom {
@@ -40,13 +54,12 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
         }
 
         .nav-link-custom {
             color: #c9deff !important;
             font-weight: 500;
-            margin: 0 4px;
             transition: 0.25s;
             padding: 0.5rem 0.75rem !important;
         }
@@ -54,7 +67,6 @@
         .nav-link-custom:hover,
         .nav-link-custom.active {
             color: #4b7bec !important;
-            transform: translateY(-2px);
         }
 
         .btn-veloz-primary {
@@ -62,14 +74,16 @@
             color: white;
             border: none;
             border-radius: 60px;
-            padding: 12px 34px;
+            padding: 10px 24px;
             font-weight: 600;
             transition: all 0.35s;
+            display: inline-block;
+            text-align: center;
         }
 
         .btn-veloz-primary:hover {
             background: linear-gradient(95deg, #2a4a8c, #1e3a6f);
-            transform: translateY(-4px);
+            transform: translateY(-2px);
             color: white;
         }
 
@@ -77,10 +91,12 @@
             border: 1.5px solid #4b7bec;
             background: transparent;
             border-radius: 60px;
-            padding: 12px 30px;
+            padding: 8px 20px;
             color: #c6ddff;
             font-weight: 500;
             transition: 0.3s;
+            display: inline-block;
+            text-align: center;
         }
 
         .btn-outline-veloz:hover {
@@ -92,16 +108,17 @@
         .testimonial-card-large {
             background: #0f1a2be6;
             backdrop-filter: blur(4px);
-            border-radius: 2rem;
+            border-radius: 1.5rem;
             border: 1px solid #253e60;
             transition: all 0.4s ease;
-            padding: 2rem;
+            padding: 1.25rem;
+            height: 100%;
         }
 
         .testimonial-card-large:hover {
             border-color: #4b7bec;
-            transform: translateY(-8px);
-            box-shadow: 0 25px 35px -18px #010314;
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -15px #010314;
         }
 
         .section-head {
@@ -114,28 +131,30 @@
 
         .rating-stars {
             color: #ffc107;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
         }
 
         .avatar-circle {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(135deg, #1e3a6f, #4b7bec);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: bold;
             color: white;
+            flex-shrink: 0;
         }
 
         .social-dark-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 44px;
-            height: 44px;
+            width: 38px;
+            height: 38px;
             background: #0f1c30;
             border-radius: 50%;
             color: #aac5ff;
@@ -146,7 +165,7 @@
         .social-dark-btn:hover {
             background: #1e3a6f;
             color: white;
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
 
         .hero-voices {
@@ -157,32 +176,141 @@
         .stat-badge {
             background: #1e3a6f;
             border-radius: 60px;
-            padding: 8px 20px;
+            padding: 6px 16px;
             display: inline-block;
+            font-size: 0.85rem;
         }
 
         .underline-accent {
-            width: 100px;
-            height: 4px;
+            width: 80px;
+            height: 3px;
             background: linear-gradient(90deg, #4b7bec, #1e3a6f);
             border-radius: 4px;
-            margin: 20px auto;
+            margin: 16px auto;
         }
 
+        /* Mobile fixes */
         @media (max-width: 991.98px) {
             .navbar-collapse {
-                max-height: 80vh;
+                max-height: 70vh;
                 overflow-y: auto;
+                padding: 1rem 0;
             }
 
             .nav-link-custom {
                 text-align: center;
+                padding: 0.75rem 0.5rem !important;
             }
 
             .btn-veloz-primary {
                 width: 100%;
                 text-align: center;
                 margin-top: 0.5rem;
+            }
+
+            .container {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .section-head {
+                font-size: 2rem !important;
+            }
+
+            .display-1 {
+                font-size: 3rem !important;
+            }
+
+            .testimonial-card-large {
+                padding: 1rem;
+            }
+
+            .fs-5 {
+                font-size: 0.9rem !important;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar-brand-custom {
+                font-size: 1.2rem;
+            }
+
+            .navbar-brand i {
+                font-size: 1.3rem !important;
+            }
+
+            .section-head {
+                font-size: 1.8rem !important;
+            }
+
+            .display-1 {
+                font-size: 2.5rem !important;
+            }
+
+            .lead {
+                font-size: 0.95rem;
+            }
+
+            .avatar-circle {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+
+            .testimonial-card-large p {
+                font-size: 0.85rem;
+            }
+
+            .btn-veloz-primary,
+            .btn-outline-veloz {
+                padding: 8px 18px;
+                font-size: 0.85rem;
+            }
+
+            .stat-badge {
+                font-size: 0.75rem;
+            }
+
+            .d-flex.gap-3 {
+                gap: 1rem !important;
+            }
+        }
+
+        /* Prevent any image overflow */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Fix text overflow */
+        .testimonial-card-large p,
+        .testimonial-card-large h5 {
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+
+        /* Fix flex wrap issues */
+        .d-flex.gap-3 {
+            flex-wrap: wrap;
+        }
+
+        /* Video thumbnail responsive fix */
+        .position-relative .bg-dark {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 576px) {
+            .position-relative .bg-dark {
+                width: 45px;
+                height: 45px;
+            }
+
+            .position-relative .bg-dark i {
+                font-size: 1.2rem !important;
             }
         }
     </style>
@@ -191,24 +319,25 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark navbar-premium fixed-top">
-        <div class="container px-3 px-sm-4">
+        <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="index.html">
-                <i class="bi bi-lightning-charge-fill" style="color: #4b7bec; font-size: 1.8rem;"></i>
+                <i class="bi bi-lightning-charge-fill" style="color: #4b7bec; font-size: 1.5rem;"></i>
                 <span class="navbar-brand-custom">VELOZ</span>
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navMain">
-                <ul class="navbar-nav mx-auto gap-lg-2 align-items-lg-center">
+                <ul class="navbar-nav mx-auto gap-1 gap-lg-2 align-items-lg-center">
                     <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link nav-link-custom" href="fleet.html">Fleet</a></li>
                     <li class="nav-item"><a class="nav-link nav-link-custom" href="showroom.html">Showroom</a></li>
                     <li class="nav-item"><a class="nav-link nav-link-custom active" href="voices.html">Voices</a></li>
                     <li class="nav-item"><a class="nav-link nav-link-custom" href="connect.html">Connect</a></li>
-                    <li class="nav-item mt-2 mt-lg-0 ms-lg-2">
-                        <a href="#" class="btn btn-veloz-primary rounded-pill d-block d-lg-inline-block text-center"
-                            style="padding: 10px 28px;"><i class="bi bi-telephone-fill me-2"></i>+234-705-335-7203</a>
+                    <li class="nav-item mt-2 mt-lg-0 ms-lg-2 w-100 w-lg-auto">
+                        <a href="#" class="btn btn-veloz-primary rounded-pill d-block"><i
+                                class="bi bi-telephone-fill me-2"></i>+234-705-335-7203</a>
                     </li>
                 </ul>
             </div>
@@ -216,31 +345,33 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-voices pt-5 mt-5">
-        <div class="container py-5">
-            <div class="row align-items-center">
+    <section class="hero-voices pt-5 mt-4">
+        <div class="container py-4">
+            <div class="row align-items-center g-4">
                 <div class="col-lg-7 text-center text-lg-start" data-aos="fade-right">
-                    <div class="stat-badge mb-4"><i class="bi bi-chat-heart-fill me-2"></i> 2,500+ Happy Owners</div>
-                    <h1 class="section-head display-3 fw-bold mb-4">What Our <span
+                    <div class="stat-badge mb-3"><i class="bi bi-chat-heart-fill me-2"></i> 2,500+ Happy Owners</div>
+                    <h1 class="section-head display-4 fw-bold mb-3">What Our <span
                             style="color: #7b9eff;">Community</span> Says</h1>
-                    <p class="lead mb-4 opacity-75">Real stories from enthusiasts who found their perfect ride with
+                    <div class="underline-accent mx-auto mx-lg-0"></div>
+                    <p class="lead mb-4 opacity-75 mt-3">Real stories from enthusiasts who found their perfect ride with
                         Veloz. Join the ranks of satisfied drivers worldwide.</p>
-                    <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
-                        <a href="connect.html" class="btn btn-veloz-primary btn-lg px-5"><i
+                    <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-lg-start">
+                        <a href="connect.html" class="btn btn-veloz-primary"><i
                                 class="bi bi-pencil-square me-2"></i>Share Your Story</a>
-                        <a href="#featured" class="btn btn-outline-veloz btn-lg px-4"><i
-                                class="bi bi-star-fill me-2"></i>Read Featured</a>
+                        <a href="#featured" class="btn btn-outline-veloz"><i class="bi bi-star-fill me-2"></i>Read
+                            Featured</a>
                     </div>
                 </div>
-                <div class="col-lg-5 mt-4 mt-lg-0" data-aos="fade-left">
+                <div class="col-lg-5 mt-3 mt-lg-0" data-aos="fade-left">
                     <div class="d-flex gap-3 justify-content-center">
                         <div class="text-center">
                             <div class="display-1 fw-bold" style="color: #7b9eff;">99.4%</div>
-                            <p class="text-secondary">Satisfaction Rate</p>
+                            <p class="text-secondary small">Satisfaction Rate</p>
                         </div>
                         <div class="text-center">
                             <div class="display-1 fw-bold" style="color: #7b9eff;">4.98</div>
-                            <p class="text-secondary">Average Rating <i class="bi bi-star-fill text-warning"></i></p>
+                            <p class="text-secondary small">Average Rating <i class="bi bi-star-fill text-warning"></i>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -249,78 +380,78 @@
     </section>
 
     <!-- Featured Testimonials -->
-    <section id="featured" class="py-5" style="background: #0b1424;">
+    <section id="featured" class="py-4" style="background: #0b1424;">
         <div class="container">
-            <div class="text-center mb-5" data-aos="fade-down">
+            <div class="text-center mb-4" data-aos="fade-down">
                 <h2 class="section-head display-5 fw-bold">Featured Voices</h2>
                 <div class="underline-accent"></div>
-                <p class="mt-3 opacity-75">Real experiences from our valued community</p>
+                <p class="mt-2 opacity-75 small">Real experiences from our valued community</p>
             </div>
-            <div class="row g-4">
+            <div class="row g-3">
                 <div class="col-md-6 col-lg-4" data-aos="flip-up">
-                    <div class="testimonial-card-large h-100">
-                        <div class="d-flex align-items-center gap-3 mb-4">
+                    <div class="testimonial-card-large">
+                        <div class="d-flex align-items-center gap-2 mb-3">
                             <div class="avatar-circle">JD</div>
                             <div>
-                                <h5 class="fw-bold mb-0">James Donovan</h5>
+                                <h6 class="fw-bold mb-0">James Donovan</h6>
                                 <div class="rating-stars"><i class="bi bi-star-fill"></i><i
                                         class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
                                         class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
                             </div>
                         </div>
                         <i class="bi bi-quote fs-1 text-primary opacity-25"></i>
-                        <p class="mt-2 fst-italic fs-5">"The team at Veloz made my dream of owning a Porsche 911 a
+                        <p class="mt-2 fst-italic small">"The team at Veloz made my dream of owning a Porsche 911 a
                             reality. The inspection report was incredibly detailed, and delivery was seamless. Highly
                             recommend!"</p>
-                        <hr class="border-secondary">
-                        <div class="d-flex justify-content-between align-items-center mt-2">
+                        <hr class="border-secondary my-2">
+                        <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap gap-1">
                             <span class="small text-secondary"><i class="bi bi-car-front"></i> Porsche 911 Turbo
                                 S</span>
-                            <span class="badge bg-primary bg-opacity-25">Verified Purchase</span>
+                            <span class="badge bg-primary bg-opacity-25 small">Verified</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="100">
-                    <div class="testimonial-card-large h-100">
-                        <div class="d-flex align-items-center gap-3 mb-4">
+                    <div class="testimonial-card-large">
+                        <div class="d-flex align-items-center gap-2 mb-3">
                             <div class="avatar-circle">SA</div>
                             <div>
-                                <h5 class="fw-bold mb-0">Sarah Adeyemi</h5>
+                                <h6 class="fw-bold mb-0">Sarah Adeyemi</h6>
                                 <div class="rating-stars"><i class="bi bi-star-fill"></i><i
                                         class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
                                         class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
                             </div>
                         </div>
                         <i class="bi bi-quote fs-1 text-primary opacity-25"></i>
-                        <p class="mt-2 fst-italic fs-5">"Absolutely flawless experience from start to finish. The
+                        <p class="mt-2 fst-italic small">"Absolutely flawless experience from start to finish. The
                             virtual showroom tour helped me choose my AMG GT, and the concierge delivery was pure
                             luxury."</p>
-                        <hr class="border-secondary">
-                        <div class="d-flex justify-content-between align-items-center mt-2">
+                        <hr class="border-secondary my-2">
+                        <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap gap-1">
                             <span class="small text-secondary"><i class="bi bi-car-front"></i> AMG GT Black
                                 Series</span>
-                            <span class="badge bg-primary bg-opacity-25">Verified Purchase</span>
+                            <span class="badge bg-primary bg-opacity-25 small">Verified</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4" data-aos="flip-up" data-aos-delay="200">
-                    <div class="testimonial-card-large h-100">
-                        <div class="d-flex align-items-center gap-3 mb-4">
+                    <div class="testimonial-card-large">
+                        <div class="d-flex align-items-center gap-2 mb-3">
                             <div class="avatar-circle">MC</div>
                             <div>
-                                <h5 class="fw-bold mb-0">Michael Chen</h5>
+                                <h6 class="fw-bold mb-0">Michael Chen</h6>
                                 <div class="rating-stars"><i class="bi bi-star-fill"></i><i
                                         class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
                                         class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
                             </div>
                         </div>
                         <i class="bi bi-quote fs-1 text-primary opacity-25"></i>
-                        <p class="mt-2 fst-italic fs-5">"The selection at Veloz is unmatched. Found my dream R8 in
+                        <p class="mt-2 fst-italic small">"The selection at Veloz is unmatched. Found my dream R8 in
                             pristine condition. The 30-day peace of mind gave me total confidence in my purchase."</p>
-                        <hr class="border-secondary">
-                        <div class="d-flex justify-content-between align-items-center mt-2">
+                        <hr class="border-secondary my-2">
+                        <div class="d-flex justify-content-between align-items-center mt-2 flex-wrap gap-1">
                             <span class="small text-secondary"><i class="bi bi-car-front"></i> Audi R8 V10</span>
-                            <span class="badge bg-primary bg-opacity-25">Verified Purchase</span>
+                            <span class="badge bg-primary bg-opacity-25 small">Verified</span>
                         </div>
                     </div>
                 </div>
@@ -329,51 +460,53 @@
     </section>
 
     <!-- More Testimonials Grid -->
-    <section class="py-5" style="background: #0d1727;">
+    <section class="py-4" style="background: #0d1727;">
         <div class="container">
-            <h2 class="section-head text-center display-6 fw-bold mb-5" data-aos="fade-up">More Stories from Our
+            <h2 class="section-head text-center display-6 fw-bold mb-4" data-aos="fade-up">More Stories from Our
                 Community</h2>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="50">
-                    <div class="testimonial-card-large p-4 h-100">
+            <div class="row g-3">
+                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="50">
+                    <div class="testimonial-card-large p-3">
                         <div class="rating-stars mb-2"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
                                 class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
                                 class="bi bi-star-fill"></i></div>
-                        <p class="fst-italic">"Best decision I've made. The M4 Competition exceeded all expectations."
-                        </p>
-                        <div class="mt-3"><strong>- David K.</strong><br><span class="small text-secondary">BMW M4
-                                Owner</span></div>
+                        <p class="fst-italic small mb-2">"Best decision I've made. The M4 Competition exceeded all
+                            expectations."</p>
+                        <div class="mt-2"><strong class="small">- David K.</strong><br><span
+                                class="small text-secondary">BMW M4 Owner</span></div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                    <div class="testimonial-card-large p-4 h-100">
+                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card-large p-3">
                         <div class="rating-stars mb-2"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
                                 class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
                                 class="bi bi-star-fill"></i></div>
-                        <p class="fst-italic">"Incredible customer service. They helped me find the perfect spec."</p>
-                        <div class="mt-3"><strong>- Priya S.</strong><br><span class="small text-secondary">Range Rover
-                                SV</span></div>
+                        <p class="fst-italic small mb-2">"Incredible customer service. They helped me find the perfect
+                            spec."</p>
+                        <div class="mt-2"><strong class="small">- Priya S.</strong><br><span
+                                class="small text-secondary">Range Rover SV</span></div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="150">
-                    <div class="testimonial-card-large p-4 h-100">
+                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="150">
+                    <div class="testimonial-card-large p-3">
                         <div class="rating-stars mb-2"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
                                 class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
                                 class="bi bi-star-fill"></i></div>
-                        <p class="fst-italic">"The 300-point inspection gave me peace of mind. Flawless delivery!"</p>
-                        <div class="mt-3"><strong>- Marcus W.</strong><br><span class="small text-secondary">Tesla Model
-                                S</span></div>
+                        <p class="fst-italic small mb-2">"The 300-point inspection gave me peace of mind. Flawless
+                            delivery!"</p>
+                        <div class="mt-2"><strong class="small">- Marcus W.</strong><br><span
+                                class="small text-secondary">Tesla Model S</span></div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-                    <div class="testimonial-card-large p-4 h-100">
+                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card-large p-3">
                         <div class="rating-stars mb-2"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
                                 class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
                                 class="bi bi-star-fill"></i></div>
-                        <p class="fst-italic">"Dark blue delivery team was professional and timely. Highly recommend!"
-                        </p>
-                        <div class="mt-3"><strong>- Elena R.</strong><br><span class="small text-secondary">Mustang Dark
-                                Horse</span></div>
+                        <p class="fst-italic small mb-2">"Dark blue delivery team was professional and timely. Highly
+                            recommend!"</p>
+                        <div class="mt-2"><strong class="small">- Elena R.</strong><br><span
+                                class="small text-secondary">Mustang Dark Horse</span></div>
                     </div>
                 </div>
             </div>
@@ -381,28 +514,29 @@
     </section>
 
     <!-- Video Testimonials Section -->
-    <section class="py-5" style="background: #0b1424;">
+    <section class="py-4" style="background: #0b1424;">
         <div class="container">
-            <div class="row align-items-center g-5">
+            <div class="row align-items-center g-4">
                 <div class="col-lg-6" data-aos="fade-right">
-                    <h2 class="section-head display-5 fw-bold mb-4">Watch Real Stories</h2>
-                    <p class="lead mb-4">Hear directly from our community about their Veloz experience.</p>
-                    <div class="d-flex gap-4 mb-4">
-                        <div><i class="bi bi-play-circle-fill fs-1" style="color: #4b7bec;"></i></div>
+                    <h2 class="section-head display-5 fw-bold mb-3">Watch Real Stories</h2>
+                    <p class="lead mb-3">Hear directly from our community about their Veloz experience.</p>
+                    <div class="d-flex gap-3 mb-3">
+                        <div><i class="bi bi-play-circle-fill fs-2" style="color: #4b7bec;"></i></div>
                         <div>
-                            <h5>Featured Video Series</h5>
-                            <p class="text-secondary">Meet owners and see their journeys</p>
+                            <h6 class="fw-bold">Featured Video Series</h6>
+                            <p class="text-secondary small mb-0">Meet owners and see their journeys</p>
                         </div>
                     </div>
                     <a href="#" class="btn btn-veloz-primary"><i class="bi bi-youtube me-2"></i> Watch on YouTube</a>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left">
+                <div class="col-lg-6 mt-3 mt-lg-0" data-aos="fade-left">
                     <div class="position-relative">
-                        <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=800&auto=format"
+                        <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=600&auto=format"
                             class="img-fluid rounded-4 shadow-lg" alt="Video Thumbnail">
                         <div class="position-absolute top-50 start-50 translate-middle">
-                            <div class="bg-dark bg-opacity-75 rounded-circle p-4">
-                                <i class="bi bi-play-fill fs-1" style="color: #4b7bec;"></i>
+                            <div class="bg-dark bg-opacity-75 rounded-circle d-flex align-items-center justify-content-center"
+                                style="width: 55px; height: 55px;">
+                                <i class="bi bi-play-fill fs-2" style="color: #4b7bec;"></i>
                             </div>
                         </div>
                     </div>
@@ -412,35 +546,40 @@
     </section>
 
     <!-- Call to Action -->
-    <section class="py-5" style="background: linear-gradient(115deg, #0f1c30, #09162a);">
-        <div class="container text-center py-4" data-aos="zoom-in">
+    <section class="py-4" style="background: linear-gradient(115deg, #0f1c30, #09162a);">
+        <div class="container text-center py-3" data-aos="zoom-in">
             <h2 class="display-5 fw-bold text-white">Share Your Veloz Story</h2>
-            <p class="lead mb-4 opacity-75">Join our community of enthusiasts and inspire others</p>
-            <a href="connect.html" class="btn btn-veloz-primary btn-lg px-5 py-3"><i
-                    class="bi bi-pencil-square me-2"></i> Write a Review</a>
+            <p class="lead mb-3 opacity-75">Join our community of enthusiasts and inspire others</p>
+            <a href="connect.html" class="btn btn-veloz-primary px-4 py-2"><i class="bi bi-pencil-square me-2"></i>
+                Write a Review</a>
         </div>
     </section>
 
-    <footer class="py-4 mt-4" style="background: #030812; border-top: 1px solid #1f3452;">
+    <footer class="py-3 mt-3" style="background: #030812; border-top: 1px solid #1f3452;">
         <div class="container">
-            <div class="row text-center text-md-start">
-                <div class="col-md-6"><span class="text-secondary">© 2025 Veloz — dark blue performance division.</span>
+            <div class="row align-items-center text-center">
+                <div class="col-12 col-md-6">
+                    <span class="text-secondary small">© 2025 Veloz — dark blue performance division.</span>
                 </div>
-                <div class="col-md-6 text-md-end mt-3 mt-md-0"><a
-                        href="https://www.facebook.com/profile.php?id=61565920483171" class="social-dark-btn me-2"><i
-                            class="bi bi-facebook"></i></a><a href="https://wa.me/2347053357203"
-                        class="social-dark-btn me-2"><i class="bi bi-whatsapp"></i></a><a
-                        href="https://www.instagram.com/ibmoore91/" class="social-dark-btn me-2"><i
-                            class="bi bi-instagram"></i></a><a
-                        href="https://www.linkedin.com/in/akanbi-ibrahim-4ab3043a6/" class="social-dark-btn"><i
-                            class="bi bi-linkedin"></i></a></div>
+                <div class="col-12 col-md-6 mt-2 mt-md-0">
+                    <div class="d-flex justify-content-center justify-content-md-end gap-2">
+                        <a href="https://www.facebook.com/profile.php?id=61565920483171" class="social-dark-btn" target="_blank"><i
+                                class="bi bi-facebook small"></i></a>
+                        <a href="https://wa.me/2347053357203" class="social-dark-btn" target="_blank"><i
+                                class="bi bi-whatsapp small"></i></a>
+                        <a href="https://www.instagram.com/ibmoore91/" class="social-dark-btn" target="_blank"><i
+                                class="bi bi-instagram small"></i></a>
+                        <a href="https://www.linkedin.com/in/akanbi-ibrahim-4ab3043a6/" class="social-dark-btn" target="_blank"><i
+                                class="bi bi-linkedin small"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 850, once: false, mirror: true, offset: 20 });</script>
+    <script>AOS.init({ duration: 600, once: true, mirror: false, offset: 20 });</script>
 </body>
 
 </html>

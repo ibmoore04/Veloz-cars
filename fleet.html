@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
     <title>Veloz | Fleet - Premium Performance Inventory</title>
     <link rel="icon"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234b7bec'%3E%3Cpath d='M12 2C8 2 4 4 4 8c0 4 8 12 8 12s8-8 8-12c0-4-4-6-8-6z'/%3E%3C/svg%3E">
@@ -20,18 +20,32 @@
             box-sizing: border-box;
         }
 
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+        }
+
         body {
             font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
             background: #0a1120;
             color: #eef3ff;
-            overflow-x: hidden;
         }
 
+        /* Navbar fixes */
         .navbar-premium {
             background: rgba(8, 18, 34, 0.96);
             backdrop-filter: blur(18px);
             border-bottom: 1px solid rgba(75, 123, 236, 0.3);
-            padding: 0.75rem 1rem;
+            padding: 0.75rem 0;
+        }
+
+        .navbar-premium .container {
+            padding-left: 16px;
+            padding-right: 16px;
+            max-width: 100%;
         }
 
         .navbar-brand-custom {
@@ -40,13 +54,12 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
         }
 
         .nav-link-custom {
             color: #c9deff !important;
             font-weight: 500;
-            margin: 0 4px;
             transition: 0.25s;
             padding: 0.5rem 0.75rem !important;
         }
@@ -54,7 +67,6 @@
         .nav-link-custom:hover,
         .nav-link-custom.active {
             color: #4b7bec !important;
-            transform: translateY(-2px);
         }
 
         .btn-veloz-primary {
@@ -62,14 +74,16 @@
             color: white;
             border: none;
             border-radius: 60px;
-            padding: 12px 34px;
+            padding: 10px 24px;
             font-weight: 600;
             transition: all 0.35s;
+            display: inline-block;
+            text-align: center;
         }
 
         .btn-veloz-primary:hover {
             background: linear-gradient(95deg, #2a4a8c, #1e3a6f);
-            transform: translateY(-4px);
+            transform: translateY(-2px);
             color: white;
         }
 
@@ -77,10 +91,13 @@
             border: 1.5px solid #4b7bec;
             background: transparent;
             border-radius: 60px;
-            padding: 8px 20px;
+            padding: 6px 16px;
             color: #c6ddff;
             font-weight: 500;
             transition: 0.3s;
+            display: inline-block;
+            text-align: center;
+            font-size: 0.85rem;
         }
 
         .btn-outline-veloz:hover {
@@ -92,36 +109,35 @@
         .luxury-card {
             background: #0f1a2be6;
             backdrop-filter: blur(4px);
-            border-radius: 2rem;
+            border-radius: 1.5rem;
             border: 1px solid #253e60;
             transition: all 0.4s ease;
             overflow: hidden;
+            height: 100%;
         }
 
         .luxury-card:hover {
             border-color: #4b7bec;
-            transform: translateY(-12px);
-            box-shadow: 0 30px 40px -18px #010314;
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -15px #010314;
         }
 
         .car-img-fluid {
-            height: 200px;
+            height: 180px;
             width: 100%;
             object-fit: cover;
-            transition: transform 0.7s;
+            transition: transform 0.5s;
         }
 
         .luxury-card:hover .car-img-fluid {
-            transform: scale(1.07);
+            transform: scale(1.05);
         }
 
         .filter-sidebar {
             background: #0f1a2b;
             border-radius: 1.5rem;
-            padding: 1.5rem;
+            padding: 1.25rem;
             border: 1px solid #253e60;
-            position: sticky;
-            top: 100px;
         }
 
         .section-head {
@@ -136,8 +152,8 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 44px;
-            height: 44px;
+            width: 38px;
+            height: 38px;
             background: #0f1c30;
             border-radius: 50%;
             color: #aac5ff;
@@ -148,23 +164,66 @@
         .social-dark-btn:hover {
             background: #1e3a6f;
             color: white;
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
 
-        @media (max-width: 991.98px) {
-            .filter-sidebar {
-                position: relative;
-                top: 0;
-                margin-bottom: 2rem;
-            }
+        .underline-accent {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #4b7bec, #1e3a6f);
+            border-radius: 4px;
+            margin: 16px auto;
+        }
 
+        /* Form controls */
+        .form-select,
+        .form-control {
+            background-color: #0f1a2b;
+            border-color: #2a3b58;
+            color: #eef3ff;
+            font-size: 0.85rem;
+        }
+
+        .form-select:focus,
+        .form-control:focus {
+            background-color: #14223b;
+            border-color: #4b7bec;
+            box-shadow: 0 0 0 2px rgba(75, 123, 236, 0.25);
+            color: white;
+            outline: none;
+        }
+
+        /* Pagination */
+        .page-link {
+            background-color: #0f1a2b;
+            border-color: #253e60;
+            color: #c9deff;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.85rem;
+        }
+
+        .page-link:hover {
+            background-color: #1e3a6f;
+            border-color: #4b7bec;
+            color: white;
+        }
+
+        .active>.page-link {
+            background-color: #4b7bec;
+            border-color: #4b7bec;
+        }
+
+        /* Mobile fixes */
+        @media (max-width: 991.98px) {
             .navbar-collapse {
-                max-height: 80vh;
+                max-height: 70vh;
                 overflow-y: auto;
+                padding: 1rem 0;
             }
 
             .nav-link-custom {
                 text-align: center;
+                padding: 0.75rem 0.5rem !important;
             }
 
             .btn-veloz-primary {
@@ -172,14 +231,57 @@
                 text-align: center;
                 margin-top: 0.5rem;
             }
+
+            .filter-sidebar {
+                position: relative;
+                top: 0;
+                margin-bottom: 1.5rem;
+            }
+
+            .container {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .car-img-fluid {
+                height: 160px;
+            }
+
+            .section-head {
+                font-size: 2rem !important;
+            }
         }
 
-        .underline-accent {
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, #4b7bec, #1e3a6f);
-            border-radius: 4px;
-            margin: 20px auto;
+        @media (max-width: 576px) {
+            .navbar-brand-custom {
+                font-size: 1.2rem;
+            }
+
+            .navbar-brand i {
+                font-size: 1.3rem !important;
+            }
+
+            .car-img-fluid {
+                height: 140px;
+            }
+
+            .luxury-card {
+                border-radius: 1rem;
+            }
+
+            .section-head {
+                font-size: 1.8rem !important;
+            }
+
+            .lead {
+                font-size: 1rem;
+            }
+        }
+
+        /* Prevent any image overflow */
+        img {
+            max-width: 100%;
+            height: auto;
         }
     </style>
 </head>
@@ -187,34 +289,35 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark navbar-premium fixed-top">
-        <div class="container px-3 px-sm-4">
+        <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="index.html">
-                <i class="bi bi-lightning-charge-fill" style="color: #4b7bec; font-size: 1.8rem;"></i>
+                <i class="bi bi-lightning-charge-fill" style="color: #4b7bec; font-size: 1.5rem;"></i>
                 <span class="navbar-brand-custom">VELOZ</span>
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navMain">
-                <ul class="navbar-nav mx-auto gap-lg-2 align-items-lg-center">
+                <ul class="navbar-nav mx-auto gap-1 gap-lg-2 align-items-lg-center">
                     <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link nav-link-custom active" href="fleet.html">Fleet</a></li>
                     <li class="nav-item"><a class="nav-link nav-link-custom" href="showroom.html">Showroom</a></li>
                     <li class="nav-item"><a class="nav-link nav-link-custom" href="voices.html">Voices</a></li>
                     <li class="nav-item"><a class="nav-link nav-link-custom" href="connect.html">Connect</a></li>
-                    <li class="nav-item mt-2 mt-lg-0 ms-lg-2">
-                        <a href="#" class="btn btn-veloz-primary rounded-pill d-block d-lg-inline-block text-center"
-                            style="padding: 10px 28px;"><i class="bi bi-telephone-fill me-2"></i>+234-705-335-7203</a>
+                    <li class="nav-item mt-2 mt-lg-0 ms-lg-2 w-100 w-lg-auto">
+                        <a href="#" class="btn btn-veloz-primary rounded-pill d-block"><i
+                                class="bi bi-telephone-fill me-2"></i>+234-705-335-7203</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <section class="pt-5 mt-5" style="background: #0b1424;">
-        <div class="container py-5">
+    <section class="pt-5 mt-4" style="background: #0b1424;">
+        <div class="container py-4">
             <div class="text-center" data-aos="fade-up">
-                <h1 class="section-head display-3 fw-bold">Our Fleet</h1>
+                <h1 class="section-head display-4 fw-bold">Our Fleet</h1>
                 <div class="underline-accent"></div>
                 <p class="lead mt-3 opacity-75">Discover 500+ handpicked performance vehicles, each inspected to
                     perfection.</p>
@@ -224,135 +327,148 @@
 
     <section class="py-4" style="background: #0b1424;">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-3 mb-4" data-aos="fade-right">
+            <div class="row g-4">
+                <div class="col-lg-3" data-aos="fade-right">
                     <div class="filter-sidebar">
                         <h5 class="fw-bold mb-3"><i class="bi bi-funnel me-2"></i>Filters</h5>
-                        <div class="mb-4"><label class="fw-semibold mb-2">Make</label><select
-                                class="form-select bg-dark text-white border-secondary">
+                        <div class="mb-3">
+                            <label class="fw-semibold mb-2 small">Make</label>
+                            <select class="form-select bg-dark text-white border-secondary">
                                 <option>All Makes</option>
                                 <option>Porsche</option>
                                 <option>Ferrari</option>
                                 <option>Lamborghini</option>
                                 <option>BMW</option>
                                 <option>Mercedes-AMG</option>
-                            </select></div>
-                        <div class="mb-4"><label class="fw-semibold mb-2">Price Range</label>
-                            <div class="d-flex gap-2 mb-2"><input type="number"
-                                    class="form-control form-control-sm bg-dark text-white border-secondary"
-                                    placeholder="Min"><input type="number"
-                                    class="form-control form-control-sm bg-dark text-white border-secondary"
-                                    placeholder="Max"></div>
+                            </select>
                         </div>
-                        <div class="mb-4"><label class="fw-semibold mb-2">Year</label><select
-                                class="form-select bg-dark text-white border-secondary">
+                        <div class="mb-3">
+                            <label class="fw-semibold mb-2 small">Price Range</label>
+                            <div class="d-flex gap-2">
+                                <input type="number" class="form-control bg-dark text-white border-secondary"
+                                    placeholder="Min">
+                                <input type="number" class="form-control bg-dark text-white border-secondary"
+                                    placeholder="Max">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="fw-semibold mb-2 small">Year</label>
+                            <select class="form-select bg-dark text-white border-secondary">
                                 <option>Any Year</option>
                                 <option>2025</option>
                                 <option>2024</option>
                                 <option>2023</option>
-                            </select></div>
+                            </select>
+                        </div>
                         <button class="btn btn-veloz-primary w-100"><i class="bi bi-search me-2"></i>Apply
                             Filters</button>
                         <button class="btn btn-outline-veloz w-100 mt-2">Reset All</button>
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2"
+                    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2"
                         data-aos="fade-left">
-                        <p class="mb-0"><i class="bi bi-car-front-fill me-2"></i>Showing <strong>24</strong> of
+                        <p class="mb-0 small"><i class="bi bi-car-front-fill me-2"></i>Showing <strong>24</strong> of
                             <strong>487</strong> vehicles
                         </p>
-                        <select class="form-select w-auto bg-dark text-white border-secondary">
+                        <select class="form-select w-auto bg-dark text-white border-secondary"
+                            style="width: auto; min-width: 140px;">
                             <option>Sort by: Newest</option>
                             <option>Price: Low to High</option>
                             <option>Price: High to Low</option>
                         </select>
                     </div>
-                    <div class="row g-4">
-                        <div class="col-md-6 col-xl-4" data-aos="fade-up">
-                            <div class="luxury-card p-3 h-100"><img
-                                    src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&auto=format"
-                                    class="car-img-fluid rounded-4">
-                                <div class="pt-3">
-                                    <div class="d-flex justify-content-between">
-                                        <h5 class="fw-bold">Porsche 911 Turbo S</h5><span
-                                            class="badge bg-primary bg-opacity-25">2024</span>
+                    <div class="row g-3">
+                        <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up">
+                            <div class="luxury-card p-2">
+                                <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=400&auto=format"
+                                    class="car-img-fluid rounded-3" alt="Porsche 911">
+                                <div class="pt-2">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <h6 class="fw-bold mb-0">911 Turbo S</h6>
+                                        <span class="badge bg-primary bg-opacity-25 small">2024</span>
                                     </div>
-                                    <p class="small text-secondary">2,340 mi · 573 hp · AWD</p>
-                                    <div class="d-flex justify-content-between"><span class="h4"
-                                            style="color:#7b9eff;">$219,000</span><a href="#"
-                                            class="btn btn-sm btn-outline-veloz">View</a></div>
+                                    <p class="small text-secondary mb-1">2,340 mi · 573 hp</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="fw-bold" style="color:#7b9eff;">$219k</span>
+                                        <a href="#" class="btn btn-sm btn-outline-veloz py-0 px-2">View</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="50">
-                            <div class="luxury-card p-3 h-100"><img
-                                    src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=600&auto=format"
-                                    class="car-img-fluid rounded-4">
-                                <div class="pt-3">
-                                    <h5 class="fw-bold">Mustang Dark Horse</h5>
-                                    <p class="small text-secondary">1,200 mi · 500 hp · V8</p>
-                                    <div class="d-flex justify-content-between"><span class="h4"
-                                            style="color:#7b9eff;">$64,500</span><a href="#"
-                                            class="btn btn-sm btn-outline-veloz">View</a></div>
+                        <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+                            <div class="luxury-card p-2">
+                                <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=400&auto=format"
+                                    class="car-img-fluid rounded-3" alt="Mustang">
+                                <div class="pt-2">
+                                    <h6 class="fw-bold mb-0">Mustang Dark Horse</h6>
+                                    <p class="small text-secondary mb-1">1,200 mi · 500 hp</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="fw-bold" style="color:#7b9eff;">$64.5k</span>
+                                        <a href="#" class="btn btn-sm btn-outline-veloz py-0 px-2">View</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="100">
-                            <div class="luxury-card p-3 h-100"><img
-                                    src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=600&auto=format"
-                                    class="car-img-fluid rounded-4">
-                                <div class="pt-3">
-                                    <h5 class="fw-bold">Audi R8 V10</h5>
-                                    <p class="small text-secondary">3,400 mi · 602 hp · Quattro</p>
-                                    <div class="d-flex justify-content-between"><span class="h4"
-                                            style="color:#7b9eff;">$157,200</span><a href="#"
-                                            class="btn btn-sm btn-outline-veloz">View</a></div>
+                        <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="luxury-card p-2">
+                                <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=400&auto=format"
+                                    class="car-img-fluid rounded-3" alt="Audi R8">
+                                <div class="pt-2">
+                                    <h6 class="fw-bold mb-0">Audi R8 V10</h6>
+                                    <p class="small text-secondary mb-1">3,400 mi · 602 hp</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="fw-bold" style="color:#7b9eff;">$157k</span>
+                                        <a href="#" class="btn btn-sm btn-outline-veloz py-0 px-2">View</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="150">
-                            <div class="luxury-card p-3 h-100"><img
-                                    src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=600&auto=format"
-                                    class="car-img-fluid rounded-4">
-                                <div class="pt-3">
-                                    <h5 class="fw-bold">BMW M4 Competition</h5>
-                                    <p class="small text-secondary">5,200 mi · 503 hp · AWD</p>
-                                    <div class="d-flex justify-content-between"><span class="h4"
-                                            style="color:#7b9eff;">$82,400</span><a href="#"
-                                            class="btn btn-sm btn-outline-veloz">View</a></div>
+                        <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+                            <div class="luxury-card p-2">
+                                <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=400&auto=format"
+                                    class="car-img-fluid rounded-3" alt="BMW M4">
+                                <div class="pt-2">
+                                    <h6 class="fw-bold mb-0">BMW M4 Comp</h6>
+                                    <p class="small text-secondary mb-1">5,200 mi · 503 hp</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="fw-bold" style="color:#7b9eff;">$82.4k</span>
+                                        <a href="#" class="btn btn-sm btn-outline-veloz py-0 px-2">View</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="200">
-                            <div class="luxury-card p-3 h-100"><img
-                                    src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=600&auto=format"
-                                    class="car-img-fluid rounded-4">
-                                <div class="pt-3">
-                                    <h5 class="fw-bold">AMG GT Black</h5>
-                                    <p class="small text-secondary">1,800 mi · 720 hp · V8</p>
-                                    <div class="d-flex justify-content-between"><span class="h4"
-                                            style="color:#7b9eff;">$138,000</span><a href="#"
-                                            class="btn btn-sm btn-outline-veloz">View</a></div>
+                        <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="luxury-card p-2">
+                                <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=400&auto=format"
+                                    class="car-img-fluid rounded-3" alt="AMG GT">
+                                <div class="pt-2">
+                                    <h6 class="fw-bold mb-0">AMG GT Black</h6>
+                                    <p class="small text-secondary mb-1">1,800 mi · 720 hp</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="fw-bold" style="color:#7b9eff;">$138k</span>
+                                        <a href="#" class="btn btn-sm btn-outline-veloz py-0 px-2">View</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-xl-4" data-aos="fade-up" data-aos-delay="250">
-                            <div class="luxury-card p-3 h-100"><img
-                                    src="https://images.unsplash.com/photo-1556189250-72ba954cfc2b?w=600&auto=format"
-                                    class="car-img-fluid rounded-4">
-                                <div class="pt-3">
-                                    <h5 class="fw-bold">Tesla Model S Plaid</h5>
-                                    <p class="small text-secondary">850 mi · 1,020 hp · Tri-Motor</p>
-                                    <div class="d-flex justify-content-between"><span class="h4"
-                                            style="color:#7b9eff;">$89,990</span><a href="#"
-                                            class="btn btn-sm btn-outline-veloz">View</a></div>
+                        <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="250">
+                            <div class="luxury-card p-2">
+                                <img src="https://images.unsplash.com/photo-1556189250-72ba954cfc2b?w=400&auto=format"
+                                    class="car-img-fluid rounded-3" alt="Tesla">
+                                <div class="pt-2">
+                                    <h6 class="fw-bold mb-0">Tesla Model S</h6>
+                                    <p class="small text-secondary mb-1">850 mi · 1,020 hp</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="fw-bold" style="color:#7b9eff;">$89.9k</span>
+                                        <a href="#" class="btn btn-sm btn-outline-veloz py-0 px-2">View</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <nav class="mt-5" data-aos="fade-up">
-                        <ul class="pagination justify-content-center">
+                    <nav class="mt-4" data-aos="fade-up">
+                        <ul class="pagination justify-content-center pagination-sm">
                             <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
                             <li class="page-item active"><a class="page-link" href="#">1</a></li>
                             <li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -365,26 +481,38 @@
         </div>
     </section>
 
-    <footer class="py-4 mt-4" style="background: #030812; border-top: 1px solid #1f3452;">
+    <footer class="py-3 mt-3" style="background: #030812; border-top: 1px solid #1f3452;">
         <div class="container">
-            <div class="row text-center text-md-start">
-                <div class="col-md-6"><span class="text-secondary">© 2025 Veloz — dark blue performance division.</span>
+            <div class="row align-items-center text-center">
+                <div class="col-12 col-md-6">
+                    <span class="text-secondary small">© 2025 Veloz — dark blue performance division.</span>
                 </div>
-                <div class="col-md-6 text-md-end mt-3 mt-md-0"><a
-                        href="https://www.facebook.com/profile.php?id=61565920483171" class="social-dark-btn me-2"><i
-                            class="bi bi-facebook"></i></a><a href="https://wa.me/2347053357203"
-                        class="social-dark-btn me-2"><i class="bi bi-whatsapp"></i></a><a
-                        href="https://www.instagram.com/ibmoore91/" class="social-dark-btn me-2"><i
-                            class="bi bi-instagram"></i></a><a
-                        href="https://www.linkedin.com/in/akanbi-ibrahim-4ab3043a6/" class="social-dark-btn"><i
-                            class="bi bi-linkedin"></i></a></div>
+                <div class="col-12 col-md-6 mt-2 mt-md-0">
+                    <div class="d-flex justify-content-center justify-content-md-end gap-2">
+                        <a href="https://www.facebook.com/profile.php?id=61565920483171" class="social-dark-btn"
+                            target="_blank"><i class="bi bi-facebook small"></i></a>
+                        <a href="https://wa.me/2347053357203" class="social-dark-btn" target="_blank"><i
+                                class="bi bi-whatsapp small"></i></a>
+                        <a href="https://www.instagram.com/ibmoore91/" class="social-dark-btn" target="_blank"><i
+                                class="bi bi-instagram small"></i></a>
+                        <a href="https://www.linkedin.com/in/akanbi-ibrahim-4ab3043a6/" class="social-dark-btn"
+                            target="_blank"><i class="bi bi-linkedin small"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 850, once: false, mirror: true, offset: 20 });</script>
+    <script>
+        AOS.init({
+            duration: 600,
+            once: true,
+            mirror: false,
+            offset: 20
+        });
+    </script>
 </body>
 
 </html>

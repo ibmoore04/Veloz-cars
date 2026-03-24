@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
     <title>Veloz | Connect - Get in Touch</title>
     <link rel="icon"
         href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234b7bec'%3E%3Cpath d='M12 2C8 2 4 4 4 8c0 4 8 12 8 12s8-8 8-12c0-4-4-6-8-6z'/%3E%3C/svg%3E">
@@ -20,18 +20,32 @@
             box-sizing: border-box;
         }
 
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+        }
+
         body {
             font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
             background: #0a1120;
             color: #eef3ff;
-            overflow-x: hidden;
         }
 
+        /* Navbar fixes */
         .navbar-premium {
             background: rgba(8, 18, 34, 0.96);
             backdrop-filter: blur(18px);
             border-bottom: 1px solid rgba(75, 123, 236, 0.3);
-            padding: 0.75rem 1rem;
+            padding: 0.75rem 0;
+        }
+
+        .navbar-premium .container {
+            padding-left: 16px;
+            padding-right: 16px;
+            max-width: 100%;
         }
 
         .navbar-brand-custom {
@@ -40,13 +54,12 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
         }
 
         .nav-link-custom {
             color: #c9deff !important;
             font-weight: 500;
-            margin: 0 4px;
             transition: 0.25s;
             padding: 0.5rem 0.75rem !important;
         }
@@ -54,7 +67,6 @@
         .nav-link-custom:hover,
         .nav-link-custom.active {
             color: #4b7bec !important;
-            transform: translateY(-2px);
         }
 
         .btn-veloz-primary {
@@ -62,14 +74,16 @@
             color: white;
             border: none;
             border-radius: 60px;
-            padding: 12px 34px;
+            padding: 10px 24px;
             font-weight: 600;
             transition: all 0.35s;
+            display: inline-block;
+            text-align: center;
         }
 
         .btn-veloz-primary:hover {
             background: linear-gradient(95deg, #2a4a8c, #1e3a6f);
-            transform: translateY(-4px);
+            transform: translateY(-2px);
             color: white;
         }
 
@@ -77,10 +91,12 @@
             border: 1.5px solid #4b7bec;
             background: transparent;
             border-radius: 60px;
-            padding: 12px 30px;
+            padding: 8px 20px;
             color: #c6ddff;
             font-weight: 500;
             transition: 0.3s;
+            display: inline-block;
+            text-align: center;
         }
 
         .btn-outline-veloz:hover {
@@ -100,56 +116,67 @@
         .contact-info-card {
             background: #0f1a2be6;
             backdrop-filter: blur(4px);
-            border-radius: 1.5rem;
+            border-radius: 1.25rem;
             border: 1px solid #253e60;
-            padding: 1.5rem;
+            padding: 1rem;
             transition: all 0.3s;
+            height: 100%;
         }
 
         .contact-info-card:hover {
             border-color: #4b7bec;
-            transform: translateY(-5px);
+            transform: translateY(-4px);
         }
 
         .form-dark-input {
             background: #0f1a2b;
             border: 1px solid #2a3b58;
             color: #eef3ff;
-            padding: 14px 20px;
+            padding: 12px 18px;
             border-radius: 48px;
             width: 100%;
+            font-size: 0.9rem;
         }
 
         .form-dark-input:focus {
             background: #14223b;
             border-color: #4b7bec;
-            box-shadow: 0 0 0 3px rgba(75, 123, 236, 0.25);
+            box-shadow: 0 0 0 2px rgba(75, 123, 236, 0.25);
             color: white;
             outline: none;
         }
 
         textarea.form-dark-input {
-            border-radius: 24px;
+            border-radius: 20px;
+            resize: vertical;
+        }
+
+        select.form-dark-input {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%237b9eff'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 18px center;
+            background-size: 12px;
         }
 
         .social-dark-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             background: #0f1c30;
             border-radius: 50%;
             color: #aac5ff;
             transition: 0.25s;
             text-decoration: none;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
         }
 
         .social-dark-btn:hover {
             background: #1e3a6f;
             color: white;
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
 
         .hero-contact {
@@ -157,34 +184,38 @@
         }
 
         .underline-accent {
-            width: 80px;
-            height: 4px;
+            width: 70px;
+            height: 3px;
             background: linear-gradient(90deg, #4b7bec, #1e3a6f);
             border-radius: 4px;
-            margin: 16px 0;
+            margin: 12px 0;
         }
 
         .faq-item {
             background: #0f1a2b;
             border-radius: 1rem;
-            padding: 1.25rem;
+            padding: 1rem;
             border: 1px solid #253e60;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             transition: 0.3s;
+            height: 100%;
         }
 
         .faq-item:hover {
             border-color: #4b7bec;
         }
 
+        /* Mobile fixes */
         @media (max-width: 991.98px) {
             .navbar-collapse {
-                max-height: 80vh;
+                max-height: 70vh;
                 overflow-y: auto;
+                padding: 1rem 0;
             }
 
             .nav-link-custom {
                 text-align: center;
+                padding: 0.75rem 0.5rem !important;
             }
 
             .btn-veloz-primary {
@@ -192,6 +223,121 @@
                 text-align: center;
                 margin-top: 0.5rem;
             }
+
+            .container {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .section-head {
+                font-size: 2rem !important;
+            }
+
+            .display-5 {
+                font-size: 1.8rem !important;
+            }
+
+            .contact-info-card {
+                padding: 0.875rem;
+            }
+
+            .contact-info-card h5 {
+                font-size: 1rem;
+            }
+
+            .contact-info-card i {
+                font-size: 1.5rem !important;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar-brand-custom {
+                font-size: 1.2rem;
+            }
+
+            .navbar-brand i {
+                font-size: 1.3rem !important;
+            }
+
+            .section-head {
+                font-size: 1.8rem !important;
+            }
+
+            .lead {
+                font-size: 0.95rem;
+            }
+
+            .contact-info-card {
+                padding: 0.75rem;
+            }
+
+            .contact-info-card .small {
+                font-size: 0.7rem;
+            }
+
+            .form-dark-input {
+                padding: 10px 16px;
+                font-size: 0.85rem;
+            }
+
+            .btn-veloz-primary,
+            .btn-outline-veloz {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+
+            .faq-item h5 {
+                font-size: 0.9rem;
+            }
+
+            .faq-item p {
+                font-size: 0.8rem;
+            }
+
+            .social-dark-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+
+            .d-flex.gap-3 {
+                gap: 0.75rem !important;
+            }
+        }
+
+        /* Prevent any overflow */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .row.g-3,
+        .row.g-4,
+        .row.g-5 {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .row.g-3>[class*="col-"],
+        .row.g-4>[class*="col-"],
+        .row.g-5>[class*="col-"] {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+        }
+
+        @media (max-width: 576px) {
+
+            .row.g-3>[class*="col-"],
+            .row.g-4>[class*="col-"],
+            .row.g-5>[class*="col-"] {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+        }
+
+        /* Fix flex wrap for buttons */
+        .d-flex.flex-wrap {
+            gap: 0.5rem;
         }
     </style>
 </head>
@@ -199,24 +345,25 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark navbar-premium fixed-top">
-        <div class="container px-3 px-sm-4">
+        <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="index.html">
-                <i class="bi bi-lightning-charge-fill" style="color: #4b7bec; font-size: 1.8rem;"></i>
+                <i class="bi bi-lightning-charge-fill" style="color: #4b7bec; font-size: 1.5rem;"></i>
                 <span class="navbar-brand-custom">VELOZ</span>
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navMain">
-                <ul class="navbar-nav mx-auto gap-lg-2 align-items-lg-center">
+                <ul class="navbar-nav mx-auto gap-1 gap-lg-2 align-items-lg-center">
                     <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link nav-link-custom" href="fleet.html">Fleet</a></li>
                     <li class="nav-item"><a class="nav-link nav-link-custom" href="showroom.html">Showroom</a></li>
                     <li class="nav-item"><a class="nav-link nav-link-custom" href="voices.html">Voices</a></li>
                     <li class="nav-item"><a class="nav-link nav-link-custom active" href="connect.html">Connect</a></li>
-                    <li class="nav-item mt-2 mt-lg-0 ms-lg-2">
-                        <a href="#" class="btn btn-veloz-primary rounded-pill d-block d-lg-inline-block text-center"
-                            style="padding: 10px 28px;"><i class="bi bi-telephone-fill me-2"></i>+234-705-335-7203</a>
+                    <li class="nav-item mt-2 mt-lg-0 ms-lg-2 w-100 w-lg-auto">
+                        <a href="#" class="btn btn-veloz-primary rounded-pill d-block"><i
+                                class="bi bi-telephone-fill me-2"></i>+234-705-335-7203</a>
                     </li>
                 </ul>
             </div>
@@ -224,46 +371,46 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-contact pt-5 mt-5">
-        <div class="container py-5">
-            <div class="row align-items-center">
+    <section class="hero-contact pt-5 mt-4">
+        <div class="container py-4">
+            <div class="row align-items-center g-4">
                 <div class="col-lg-6 text-center text-lg-start" data-aos="fade-right">
-                    <h1 class="section-head display-3 fw-bold mb-4">Let's <span style="color: #7b9eff;">Connect</span>
+                    <h1 class="section-head display-4 fw-bold mb-3">Let's <span style="color: #7b9eff;">Connect</span>
                     </h1>
-                    <div class="underline-accent"></div>
-                    <p class="lead mb-4 opacity-75">Our team is ready to assist you. Whether you're looking for a
+                    <div class="underline-accent mx-auto mx-lg-0"></div>
+                    <p class="lead mb-4 opacity-75 mt-3">Our team is ready to assist you. Whether you're looking for a
                         specific vehicle, need financing, or want to schedule a test drive — we're here to help.</p>
-                    <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
-                        <a href="mailto:akanbiibrahimolatunde27@gmail.com" class="btn btn-veloz-primary btn-lg px-5"><i
+                    <div class="d-flex flex-wrap gap-2 justify-content-center justify-content-lg-start">
+                        <a href="mailto:akanbiibrahimolatunde27@gmail.com" class="btn btn-veloz-primary"><i
                                 class="bi bi-envelope-paper me-2"></i>Send Message</a>
-                        <a href="https://wa.me/2347053357203" target="_blank"
-                            class="btn btn-outline-veloz btn-lg px-4"><i class="bi bi-whatsapp me-2"></i>WhatsApp Us</a>
+                        <a href="https://wa.me/2347053357203" target="_blank" class="btn btn-outline-veloz"><i
+                                class="bi bi-whatsapp me-2"></i>WhatsApp Us</a>
                     </div>
                 </div>
-                <div class="col-lg-6 mt-4 mt-lg-0" data-aos="fade-left">
-                    <div class="row g-3">
+                <div class="col-lg-6 mt-3 mt-lg-0" data-aos="fade-left">
+                    <div class="row g-2">
                         <div class="col-6">
                             <div class="contact-info-card text-center">
-                                <i class="bi bi-telephone-fill fs-1" style="color: #4b7bec;"></i>
-                                <h5 class="mt-2">Phone</h5>
+                                <i class="bi bi-telephone-fill fs-2" style="color: #4b7bec;"></i>
+                                <h6 class="mt-2 fw-bold mb-1">Phone</h6>
                                 <p class="mb-0 small">+234-705-335-7203</p>
-                                <p class="small text-secondary">Mon-Sat, 9am-8pm</p>
+                                <p class="small text-secondary mb-0">Mon-Sat, 9am-8pm</p>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="contact-info-card text-center">
-                                <i class="bi bi-envelope-fill fs-1" style="color: #4b7bec;"></i>
-                                <h5 class="mt-2">Email</h5>
+                                <i class="bi bi-envelope-fill fs-2" style="color: #4b7bec;"></i>
+                                <h6 class="mt-2 fw-bold mb-1">Email</h6>
                                 <p class="mb-0 small">akanbiibrahim<br>olatunde27@gmail.com</p>
-                                <p class="small text-secondary">24h response</p>
+                                <p class="small text-secondary mb-0">24h response</p>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="contact-info-card text-center">
-                                <i class="bi bi-geo-alt-fill fs-1" style="color: #4b7bec;"></i>
-                                <h5 class="mt-2">Showroom</h5>
+                                <i class="bi bi-geo-alt-fill fs-2" style="color: #4b7bec;"></i>
+                                <h6 class="mt-2 fw-bold mb-1">Showroom</h6>
                                 <p class="mb-0 small">Ijebu-Ode, Ogun State, Nigeria</p>
-                                <p class="small text-secondary">Visit by appointment</p>
+                                <p class="small text-secondary mb-0">Visit by appointment</p>
                             </div>
                         </div>
                     </div>
@@ -273,16 +420,16 @@
     </section>
 
     <!-- Contact Form & Map Section -->
-    <section id="contact-form" class="py-5" style="background: #0b1424;">
+    <section id="contact-form" class="py-4" style="background: #0b1424;">
         <div class="container">
-            <div class="row g-5">
+            <div class="row g-4">
                 <div class="col-lg-7" data-aos="fade-right">
-                    <h2 class="section-head display-6 fw-bold mb-4">Send Us a Message</h2>
-                    <p class="mb-4">Fill out the form below and our concierge team will get back to you within 24 hours.
-                    </p>
+                    <h2 class="section-head display-6 fw-bold mb-3">Send Us a Message</h2>
+                    <p class="mb-3 small">Fill out the form below and our concierge team will get back to you within 24
+                        hours.</p>
                     <form
                         onsubmit="event.preventDefault(); alert('✓ Message sent successfully! Our team will contact you shortly.');">
-                        <div class="row g-3">
+                        <div class="row g-2">
                             <div class="col-md-6">
                                 <input type="text" class="form-dark-input" placeholder="Full Name" required>
                             </div>
@@ -303,33 +450,36 @@
                                 </select>
                             </div>
                             <div class="col-12">
-                                <textarea rows="4" class="form-dark-input" placeholder="Your message..."></textarea>
+                                <textarea rows="3" class="form-dark-input" placeholder="Your message..."></textarea>
                             </div>
                             <div class="col-12">
-                                <button type="submit" class="btn btn-veloz-primary w-100 w-md-auto px-5 py-3"><i
+                                <button type="submit" class="btn btn-veloz-primary w-100"><i
                                         class="bi bi-send me-2"></i>Send Message</button>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="col-lg-5" data-aos="fade-left">
-                    <div class="contact-info-card h-100 d-flex flex-column justify-content-center">
-                        <h4 class="fw-bold mb-3"><i class="bi bi-clock-history me-2"></i>Business Hours</h4>
+                    <div class="contact-info-card h-100">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-clock-history me-2"></i>Business Hours</h5>
                         <div class="d-flex justify-content-between py-2 border-bottom border-secondary">
-                            <span>Monday - Friday</span><span>9:00 AM - 8:00 PM</span>
+                            <span class="small">Monday - Friday</span><span class="small">9:00 AM - 8:00 PM</span>
                         </div>
                         <div class="d-flex justify-content-between py-2 border-bottom border-secondary">
-                            <span>Saturday</span><span>10:00 AM - 6:00 PM</span>
+                            <span class="small">Saturday</span><span class="small">10:00 AM - 6:00 PM</span>
                         </div>
                         <div class="d-flex justify-content-between py-2">
-                            <span>Sunday</span><span>Closed (Online support only)</span>
+                            <span class="small">Sunday</span><span class="small">Closed (Online support only)</span>
                         </div>
                         <hr class="border-secondary my-3">
-                        <h4 class="fw-bold mb-3"><i class="bi bi-chat-dots me-2"></i>Follow Us</h4>
-                        <div class="d-flex gap-3">
-                            <a href="https://www.facebook.com/profile.php?id=61565920483171" class="social-dark-btn"><i class="bi bi-facebook"></i></a>
-                            <a href="https://www.instagram.com/ibmoore91/" class="social-dark-btn"><i class="bi bi-instagram"></i></a>
-                            <a href="https://x.com/ibmoore911" class="social-dark-btn"><i class="bi bi-twitter-x"></i></a>
+                        <h5 class="fw-bold mb-3"><i class="bi bi-chat-dots me-2"></i>Follow Us</h5>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <a href="https://www.facebook.com/profile.php?id=61565920483171" class="social-dark-btn"><i
+                                    class="bi bi-facebook"></i></a>
+                            <a href="https://www.instagram.com/ibmoore91/" class="social-dark-btn"><i
+                                    class="bi bi-instagram"></i></a>
+                            <a href="https://x.com/ibmoore911" class="social-dark-btn"><i
+                                    class="bi bi-twitter-x"></i></a>
                             <a href="https://wa.me/2347053357203" target="_blank" class="social-dark-btn"><i
                                     class="bi bi-whatsapp"></i></a>
                             <a href="https://www.linkedin.com/in/akanbi-ibrahim-4ab3043a6/" target="_blank"
@@ -342,43 +492,43 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-5" style="background: #0d1727;">
+    <section class="py-4" style="background: #0d1727;">
         <div class="container">
-            <div class="text-center mb-5" data-aos="fade-down">
+            <div class="text-center mb-4" data-aos="fade-down">
                 <h2 class="section-head display-5 fw-bold">Frequently Asked Questions</h2>
                 <div class="underline-accent mx-auto"></div>
-                <p class="mt-3 opacity-75">Quick answers to common questions</p>
+                <p class="mt-2 opacity-75 small">Quick answers to common questions</p>
             </div>
-            <div class="row g-4">
+            <div class="row g-2">
                 <div class="col-md-6" data-aos="fade-up">
                     <div class="faq-item">
-                        <h5 class="fw-bold"><i class="bi bi-question-circle-fill me-2" style="color: #4b7bec;"></i> How
-                            does the test drive process work?</h5>
-                        <p class="mb-0 text-secondary mt-2">Simply schedule through our contact form or call us. We'll
+                        <h6 class="fw-bold mb-2"><i class="bi bi-question-circle-fill me-2" style="color: #4b7bec;"></i>
+                            How does the test drive process work?</h6>
+                        <p class="mb-0 text-secondary small">Simply schedule through our contact form or call us. We'll
                             bring the vehicle to your preferred location or arrange a visit to our showroom.</p>
                     </div>
                 </div>
                 <div class="col-md-6" data-aos="fade-up" data-aos-delay="50">
                     <div class="faq-item">
-                        <h5 class="fw-bold"><i class="bi bi-question-circle-fill me-2" style="color: #4b7bec;"></i> Do
-                            you offer financing options?</h5>
-                        <p class="mb-0 text-secondary mt-2">Yes! We partner with leading financial institutions to offer
-                            competitive rates. Our team can help you find the best financing solution.</p>
+                        <h6 class="fw-bold mb-2"><i class="bi bi-question-circle-fill me-2" style="color: #4b7bec;"></i>
+                            Do you offer financing options?</h6>
+                        <p class="mb-0 text-secondary small">Yes! We partner with leading financial institutions to
+                            offer competitive rates. Our team can help you find the best financing solution.</p>
                     </div>
                 </div>
                 <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="faq-item">
-                        <h5 class="fw-bold"><i class="bi bi-question-circle-fill me-2" style="color: #4b7bec;"></i> Can
-                            I trade in my current vehicle?</h5>
-                        <p class="mb-0 text-secondary mt-2">Absolutely. We accept trade-ins and offer competitive
+                        <h6 class="fw-bold mb-2"><i class="bi bi-question-circle-fill me-2" style="color: #4b7bec;"></i>
+                            Can I trade in my current vehicle?</h6>
+                        <p class="mb-0 text-secondary small">Absolutely. We accept trade-ins and offer competitive
                             valuations. Contact us for a free appraisal.</p>
                     </div>
                 </div>
                 <div class="col-md-6" data-aos="fade-up" data-aos-delay="150">
                     <div class="faq-item">
-                        <h5 class="fw-bold"><i class="bi bi-question-circle-fill me-2" style="color: #4b7bec;"></i> What
-                            is the delivery timeframe?</h5>
-                        <p class="mb-0 text-secondary mt-2">Delivery typically takes 3-7 business days depending on
+                        <h6 class="fw-bold mb-2"><i class="bi bi-question-circle-fill me-2" style="color: #4b7bec;"></i>
+                            What is the delivery timeframe?</h6>
+                        <p class="mb-0 text-secondary small">Delivery typically takes 3-7 business days depending on
                             location. We offer nationwide delivery with enclosed carriers.</p>
                     </div>
                 </div>
@@ -387,15 +537,16 @@
     </section>
 
     <!-- Newsletter Section -->
-    <section class="py-5" style="background: linear-gradient(115deg, #0b1424, #07112a);">
-        <div class="container text-center py-4" data-aos="zoom-in">
+    <section class="py-4" style="background: linear-gradient(115deg, #0b1424, #07112a);">
+        <div class="container text-center py-3" data-aos="zoom-in">
             <h2 class="display-5 fw-bold text-white">Stay Updated</h2>
-            <p class="lead mb-4 opacity-75">Subscribe to receive exclusive offers and new arrivals</p>
+            <p class="lead mb-3 opacity-75">Subscribe to receive exclusive offers and new arrivals</p>
             <div class="row justify-content-center">
-                <div class="col-md-6">
+                <div class="col-md-8 col-lg-6">
                     <div class="d-flex gap-2 flex-wrap justify-content-center">
-                        <input type="email" class="form-dark-input flex-grow-1" placeholder="Your email address">
-                        <button class="btn btn-veloz-primary px-5">Subscribe</button>
+                        <input type="email" class="form-dark-input flex-grow-1" placeholder="Your email address"
+                            style="min-width: 180px;">
+                        <button class="btn btn-veloz-primary">Subscribe</button>
                     </div>
                     <p class="small text-secondary mt-2">No spam. Unsubscribe anytime.</p>
                 </div>
@@ -403,23 +554,32 @@
         </div>
     </section>
 
-    <footer class="py-4" style="background: #030812; border-top: 1px solid #1f3452;">
+    <footer class="py-3" style="background: #030812; border-top: 1px solid #1f3452;">
         <div class="container">
-            <div class="row text-center text-md-start">
-                <div class="col-md-6"><span class="text-secondary">© 2025 Veloz — dark blue performance division. Drive
-                        with soul.</span></div>
-                <div class="col-md-6 text-md-end mt-3 mt-md-0"><a href="https://www.facebook.com/profile.php?id=61565920483171" class="social-dark-btn me-2"><i
-                            class="bi bi-facebook"></i></a><a href="https://wa.me/2347053357203" class="social-dark-btn me-2"><i
-                            class="bi bi-whatsapp"></i></a><a href="https://www.instagram.com/ibmoore91/" class="social-dark-btn me-2"><i
-                            class="bi bi-instagram"></i></a><a href="https://www.linkedin.com/in/akanbi-ibrahim-4ab3043a6/" class="social-dark-btn"><i
-                            class="bi bi-linkedin"></i></a></div>
+            <div class="row align-items-center text-center">
+                <div class="col-12 col-md-6">
+                    <span class="text-secondary small">© 2025 Veloz — dark blue performance division. Drive with
+                        soul.</span>
+                </div>
+                <div class="col-12 col-md-6 mt-2 mt-md-0">
+                    <div class="d-flex justify-content-center justify-content-md-end gap-2">
+                        <a href="https://www.facebook.com/profile.php?id=61565920483171" target="_blank"
+                            class="social-dark-btn"><i class="bi bi-facebook small"></i></a>
+                        <a href="https://wa.me/2347053357203" class="social-dark-btn" target="_blank"><i
+                                class="bi bi-whatsapp small"></i></a>
+                        <a href="https://www.instagram.com/ibmoore91/" class="social-dark-btn" target="_blank"><i
+                                class="bi bi-instagram small"></i></a>
+                        <a href="https://www.linkedin.com/in/akanbi-ibrahim-4ab3043a6/" class="social-dark-btn" target="_blank"><i
+                                class="bi bi-linkedin small"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ duration: 850, once: false, mirror: true, offset: 20 });</script>
+    <script>AOS.init({ duration: 600, once: true, mirror: false, offset: 20 });</script>
 </body>
 
 </html>
