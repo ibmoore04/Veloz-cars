@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Veloz | Showroom - Experience Luxury in Person</title>
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234b7bec'%3E%3Cpath d='M12 2C8 2 4 4 4 8c0 4 8 12 8 12s8-8 8-12c0-4-4-6-8-6z'/%3E%3C/svg%3E">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            background: #0a1120;
+            color: #eef3ff;
+            overflow-x: hidden;
+        }
+
+        .navbar-premium {
+            background: rgba(8, 18, 34, 0.96);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(75, 123, 236, 0.3);
+            padding: 0.75rem 1rem;
+        }
+
+        .navbar-brand-custom {
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #8aabff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.6rem;
+        }
+
+        .nav-link-custom {
+            color: #c9deff !important;
+            font-weight: 500;
+            margin: 0 4px;
+            transition: 0.25s;
+            padding: 0.5rem 0.75rem !important;
+        }
+
+        .nav-link-custom:hover,
+        .nav-link-custom.active {
+            color: #4b7bec !important;
+            transform: translateY(-2px);
+        }
+
+        .btn-veloz-primary {
+            background: linear-gradient(95deg, #1e3a6f, #0f2a4f);
+            color: white;
+            border: none;
+            border-radius: 60px;
+            padding: 12px 34px;
+            font-weight: 600;
+            transition: all 0.35s;
+        }
+
+        .btn-veloz-primary:hover {
+            background: linear-gradient(95deg, #2a4a8c, #1e3a6f);
+            transform: translateY(-4px);
+            color: white;
+        }
+
+        .btn-outline-veloz {
+            border: 1.5px solid #4b7bec;
+            background: transparent;
+            border-radius: 60px;
+            padding: 12px 30px;
+            color: #c6ddff;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .btn-outline-veloz:hover {
+            background: #1e3a6f;
+            border-color: #7b9eff;
+            color: white;
+        }
+
+        .showroom-card {
+            background: #0f1a2be6;
+            backdrop-filter: blur(4px);
+            border-radius: 2rem;
+            border: 1px solid #253e60;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+
+        .showroom-card:hover {
+            border-color: #4b7bec;
+            transform: translateY(-8px);
+            box-shadow: 0 25px 35px -18px #010314;
+        }
+
+        .showroom-img {
+            height: 240px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.7s;
+        }
+
+        .showroom-card:hover .showroom-img {
+            transform: scale(1.05);
+        }
+
+        .section-head {
+            font-weight: 800;
+            background: linear-gradient(125deg, #ffffff, #7b9eff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: #1e3a6f;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #7b9eff;
+            transition: 0.3s;
+        }
+
+        .social-dark-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: #0f1c30;
+            border-radius: 50%;
+            color: #aac5ff;
+            transition: 0.25s;
+            text-decoration: none;
+        }
+
+        .social-dark-btn:hover {
+            background: #1e3a6f;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .hero-showroom {
+            background: linear-gradient(135deg, #0a1120, #07112a);
+            position: relative;
+        }
+
+        .virtual-tour-btn {
+            background: rgba(30, 58, 111, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 60px;
+            padding: 15px 40px;
+            transition: 0.3s;
+        }
+
+        .virtual-tour-btn:hover {
+            background: #1e3a6f;
+            transform: scale(1.05);
+        }
+
+        .underline-accent {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #4b7bec, #1e3a6f);
+            border-radius: 4px;
+            margin: 20px auto;
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+
+            .nav-link-custom {
+                text-align: center;
+            }
+
+            .btn-veloz-primary {
+                width: 100%;
+                text-align: center;
+                margin-top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-premium fixed-top">
+        <div class="container px-3 px-sm-4">
+            <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="index.html">
+                <i class="bi bi-lightning-charge-fill" style="color: #4b7bec; font-size: 1.8rem;"></i>
+                <span class="navbar-brand-custom">VELOZ</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMain">
+                <ul class="navbar-nav mx-auto gap-lg-2 align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="fleet.html">Fleet</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom active" href="showroom.html">Showroom</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="voices.html">Voices</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-custom" href="connect.html">Connect</a></li>
+                    <li class="nav-item mt-2 mt-lg-0 ms-lg-2">
+                        <a href="#" class="btn btn-veloz-primary rounded-pill d-block d-lg-inline-block text-center"
+                            style="padding: 10px 28px;"><i class="bi bi-telephone-fill me-2"></i>+234-705-335-7203</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-showroom pt-5 mt-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-center text-lg-start" data-aos="fade-right">
+                    <h1 class="section-head display-3 fw-bold mb-4">Experience <br>the <span
+                            style="color: #7b9eff;">Dark Blue</span> Difference</h1>
+                    <p class="lead mb-4 opacity-75">Visit our flagship showrooms across the globe. Immerse yourself in
+                        automotive excellence with personalized concierge service.</p>
+                    <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+                        <a href="#locations" class="btn btn-veloz-primary btn-lg px-5"><i
+                                class="bi bi-geo-alt-fill me-2"></i>Find a Showroom</a>
+                        <a href="#" class="btn btn-outline-veloz btn-lg px-4 virtual-tour-btn"><i
+                                class="bi bi-vr me-2"></i>360° Virtual Tour</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-4 mt-lg-0" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&auto=format"
+                        alt="Luxury Showroom" class="img-fluid rounded-4 shadow-lg"
+                        style="border: 2px solid rgba(75,123,236,0.4);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showroom Features -->
+    <section class="py-5" style="background: #0b1424;">
+        <div class="container py-4">
+            <div class="text-center mb-5" data-aos="fade-down">
+                <h2 class="section-head display-5 fw-bold">The Velox Experience</h2>
+                <div class="underline-accent"></div>
+                <p class="mt-3 opacity-75">Every showroom is designed to deliver an unforgettable journey</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="text-center">
+                        <div class="feature-icon mx-auto mb-3"><i class="bi bi-cup-straw"></i></div>
+                        <h4>Premium Lounge</h4>
+                        <p class="text-secondary">Enjoy curated refreshments while our experts guide you through the
+                            collection.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-center">
+                        <div class="feature-icon mx-auto mb-3"><i class="bi bi-car-front"></i></div>
+                        <h4>Test Drive Center</h4>
+                        <p class="text-secondary">Dedicated 5-mile circuit to experience performance firsthand.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-center">
+                        <div class="feature-icon mx-auto mb-3"><i class="bi bi-brush"></i></div>
+                        <h4>Customization Studio</h4>
+                        <p class="text-secondary">Personalize your vehicle with exclusive finishes and materials.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showroom Locations -->
+    <section id="locations" class="py-5" style="background: #0d1727;">
+        <div class="container">
+            <h2 class="section-head text-center display-5 fw-bold mb-5" data-aos="fade-up">Global Showrooms</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="flip-left">
+                    <div class="showroom-card p-0">
+                        <img src="https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/39/bf/26/ba/8e/v1_E10/E108NB0X.jpg?w=800&cf_fit=scale-down&mark-alpha=18&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark4.png&q=85&format=auto&s=5d0f1ee0c357e02cd83f2c710911f9434ec381007668478758483cd206bcf73e"
+                            class="showroom-img" alt="Lagos Showroom">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h4 class="fw-bold">Lagos, Nigeria</h4>
+                                    <p class="text-secondary mb-2"><i class="bi bi-pin-map-fill me-1"></i> Victoria
+                                        Island</p>
+                                </div>
+                                <span class="badge bg-primary bg-opacity-25">Flagship</span>
+                            </div>
+                            <p class="small mt-2">Plot 27, Adeola Odeku Street, VI, Lagos</p>
+                            <div class="d-flex gap-2 mt-3">
+                                <a href="#" class="btn btn-sm btn-outline-veloz"><i class="bi bi-telephone"></i>
+                                    Call</a>
+                                <a href="#" class="btn btn-sm btn-outline-veloz"><i class="bi bi-compass"></i>
+                                    Directions</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="100">
+                    <div class="showroom-card p-0">
+                        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&auto=format"
+                            class="showroom-img" alt="Dubai Showroom">
+                        <div class="p-4">
+                            <h4 class="fw-bold">Dubai, UAE</h4>
+                            <p class="text-secondary mb-2"><i class="bi bi-pin-map-fill me-1"></i> Sheikh Zayed Road</p>
+                            <p class="small mt-2">Emirates Towers Blvd, Dubai</p>
+                            <div class="d-flex gap-2 mt-3">
+                                <a href="#" class="btn btn-sm btn-outline-veloz"><i class="bi bi-telephone"></i>
+                                    Call</a>
+                                <a href="#" class="btn btn-sm btn-outline-veloz"><i class="bi bi-compass"></i>
+                                    Directions</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="200">
+                    <div class="showroom-card p-0">
+                        <img src="https://elements-resized.envatousercontent.com/envato-dam-assets-production/EVA/TRX/59/d3/18/ff/17/v1_E11/E117OWUA.jpg?w=800&cf_fit=scale-down&mark-alpha=18&mark=https%3A%2F%2Felements-assets.envato.com%2Fstatic%2Fwatermark4.png&q=85&format=auto&s=2e860522e07504953b7282d4ccc76e36654f2eaf8595038f2d6ab43f3e634007"
+                            class="showroom-img" alt="London Showroom">
+                        <div class="p-4">
+                            <h4 class="fw-bold">London, UK</h4>
+                            <p class="text-secondary mb-2"><i class="bi bi-pin-map-fill me-1"></i> Mayfair</p>
+                            <p class="small mt-2">Berkeley Square, London W1J</p>
+                            <div class="d-flex gap-2 mt-3">
+                                <a href="#" class="btn btn-sm btn-outline-veloz"><i class="bi bi-telephone"></i>
+                                    Call</a>
+                                <a href="#" class="btn btn-sm btn-outline-veloz"><i class="bi bi-compass"></i>
+                                    Directions</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="300">
+                    <div class="showroom-card p-0">
+                        <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?w=600&auto=format"
+                            class="showroom-img" alt="Miami Showroom">
+                        <div class="p-4">
+                            <h4 class="fw-bold">Miami, USA</h4>
+                            <p class="text-secondary mb-2"><i class="bi bi-pin-map-fill me-1"></i> Brickell Avenue</p>
+                            <p class="small mt-2">801 Brickell Bay Dr, Miami, FL</p>
+                            <div class="d-flex gap-2 mt-3">
+                                <a href="#" class="btn btn-sm btn-outline-veloz"><i class="bi bi-telephone"></i>
+                                    Call</a>
+                                <a href="#" class="btn btn-sm btn-outline-veloz"><i class="bi bi-compass"></i>
+                                    Directions</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="400">
+                    <div class="showroom-card p-0">
+                        <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=600&auto=format"
+                            class="showroom-img" alt="Tokyo Showroom">
+                        <div class="p-4">
+                            <h4 class="fw-bold">Tokyo, Japan</h4>
+                            <p class="text-secondary mb-2"><i class="bi bi-pin-map-fill me-1"></i> Ginza District</p>
+                            <p class="small mt-2">6-12-15 Ginza, Chuo City</p>
+                            <div class="d-flex gap-2 mt-3">
+                                <a href="#" class="btn btn-sm btn-outline-veloz"><i class="bi bi-telephone"></i>
+                                    Call</a>
+                                <a href="#" class="btn btn-sm btn-outline-veloz"><i class="bi bi-compass"></i>
+                                    Directions</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="500">
+                    <div class="showroom-card p-0">
+                        <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=600&auto=format"
+                            class="showroom-img" alt="Paris Showroom">
+                        <div class="p-4">
+                            <h4 class="fw-bold">Paris, France</h4>
+                            <p class="text-secondary mb-2"><i class="bi bi-pin-map-fill me-1"></i> Champs-Élysées</p>
+                            <p class="small mt-2">78 Av. des Champs-Élysées</p>
+                            <div class="d-flex gap-2 mt-3">
+                                <a href="#" class="btn btn-sm btn-outline-veloz"><i class="bi bi-telephone"></i>
+                                    Call</a>
+                                <a href="#" class="btn btn-sm btn-outline-veloz"><i class="bi bi-compass"></i>
+                                    Directions</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Virtual Tour Preview -->
+    <section class="py-5" style="background: linear-gradient(115deg, #0b1424, #07112a);">
+        <div class="container text-center py-4" data-aos="zoom-in">
+            <h2 class="section-head display-5 fw-bold mb-4">Can't Visit in Person?</h2>
+            <p class="lead mb-4">Experience our showrooms through immersive 360° virtual tours</p>
+            <a href="#" class="btn btn-veloz-primary btn-lg px-5 py-3"><i class="bi bi-vr me-2"></i> Launch Virtual
+                Tour</a>
+            <p class="mt-3 small text-secondary">Available on desktop and mobile devices</p>
+        </div>
+    </section>
+
+    <footer class="py-4 mt-4" style="background: #030812; border-top: 1px solid #1f3452;">
+        <div class="container">
+            <div class="row text-center text-md-start">
+                <div class="col-md-6"><span class="text-secondary">© 2025 Veloz — dark blue performance division.</span>
+                </div>
+                <div class="col-md-6 text-md-end mt-3 mt-md-0"><a
+                        href="https://www.facebook.com/profile.php?id=61565920483171" class="social-dark-btn me-2"><i
+                            class="bi bi-facebook"></i></a><a href="https://wa.me/2347053357203"
+                        class="social-dark-btn me-2"><i class="bi bi-whatsapp"></i></a><a
+                        href="https://www.instagram.com/ibmoore91/" class="social-dark-btn me-2"><i
+                            class="bi bi-instagram"></i></a><a
+                        href="https://www.linkedin.com/in/akanbi-ibrahim-4ab3043a6/" class="social-dark-btn"><i
+                            class="bi bi-linkedin"></i></a></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 850, once: false, mirror: true, offset: 20 });</script>
+</body>
+
+</html>
